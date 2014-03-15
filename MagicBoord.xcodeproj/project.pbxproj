@@ -19,7 +19,11 @@
 		8700C77218D390020015B0DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8700C75A18D390020015B0DE /* UIKit.framework */; };
 		8700C77A18D390020015B0DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8700C77818D390020015B0DE /* InfoPlist.strings */; };
 		8700C77C18D390020015B0DE /* MagicBoordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8700C77B18D390020015B0DE /* MagicBoordTests.m */; };
-		8700C78718D390840015B0DE /* LCLTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8700C78618D390840015B0DE /* LCLTip.m */; };
+		8700C78A18D3A0DE0015B0DE /* LCLTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8700C78918D3A0DE0015B0DE /* LCLTip.m */; };
+		8700C78C18D3EE940015B0DE /* iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8700C78B18D3EE940015B0DE /* iphone.storyboard */; };
+		8700C79018D3F1D60015B0DE /* redbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8700C78F18D3F1D60015B0DE /* redbutton.png */; };
+		8700C79818D3F9ED0015B0DE /* CheckerBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 8700C79718D3F9ED0015B0DE /* CheckerBoard.png */; };
+		B87F568143F046749F92D76E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7846964CD4E41E789ADA9C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4235C290072749D69C5795B1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8700C75318D390020015B0DE /* MagicBoord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicBoord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8700C75618D390020015B0DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8700C75818D390020015B0DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,8 +54,12 @@
 		8700C77718D390020015B0DE /* MagicBoordTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MagicBoordTests-Info.plist"; sourceTree = "<group>"; };
 		8700C77918D390020015B0DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8700C77B18D390020015B0DE /* MagicBoordTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MagicBoordTests.m; sourceTree = "<group>"; };
-		8700C78518D390840015B0DE /* LCLTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTip.h; sourceTree = "<group>"; };
-		8700C78618D390840015B0DE /* LCLTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTip.m; sourceTree = "<group>"; };
+		8700C78818D3A0DE0015B0DE /* LCLTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTip.h; sourceTree = "<group>"; };
+		8700C78918D3A0DE0015B0DE /* LCLTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTip.m; sourceTree = "<group>"; };
+		8700C78B18D3EE940015B0DE /* iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iphone.storyboard; sourceTree = "<group>"; };
+		8700C78F18D3F1D60015B0DE /* redbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redbutton.png; sourceTree = "<group>"; };
+		8700C79718D3F9ED0015B0DE /* CheckerBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckerBoard.png; sourceTree = "<group>"; };
+		A7846964CD4E41E789ADA9C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +70,7 @@
 				8700C75918D390020015B0DE /* CoreGraphics.framework in Frameworks */,
 				8700C75B18D390020015B0DE /* UIKit.framework in Frameworks */,
 				8700C75718D390020015B0DE /* Foundation.framework in Frameworks */,
+				B87F568143F046749F92D76E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +94,7 @@
 				8700C77518D390020015B0DE /* MagicBoordTests */,
 				8700C75518D390020015B0DE /* Frameworks */,
 				8700C75418D390020015B0DE /* Products */,
+				4235C290072749D69C5795B1 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +114,7 @@
 				8700C75818D390020015B0DE /* CoreGraphics.framework */,
 				8700C75A18D390020015B0DE /* UIKit.framework */,
 				8700C76F18D390020015B0DE /* XCTest.framework */,
+				A7846964CD4E41E789ADA9C6 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,8 +124,9 @@
 			children = (
 				8700C76518D390020015B0DE /* LCLAppDelegate.h */,
 				8700C76618D390020015B0DE /* LCLAppDelegate.m */,
-				8700C78518D390840015B0DE /* LCLTip.h */,
-				8700C78618D390840015B0DE /* LCLTip.m */,
+				8700C78818D3A0DE0015B0DE /* LCLTip.h */,
+				8700C78918D3A0DE0015B0DE /* LCLTip.m */,
+				8700C78B18D3EE940015B0DE /* iphone.storyboard */,
 				8700C76818D390020015B0DE /* Images.xcassets */,
 				8700C75D18D390020015B0DE /* Supporting Files */,
 			);
@@ -123,6 +136,8 @@
 		8700C75D18D390020015B0DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8700C79718D3F9ED0015B0DE /* CheckerBoard.png */,
+				8700C78F18D3F1D60015B0DE /* redbutton.png */,
 				8700C75E18D390020015B0DE /* MagicBoord-Info.plist */,
 				8700C75F18D390020015B0DE /* InfoPlist.strings */,
 				8700C76218D390020015B0DE /* main.m */,
@@ -156,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8700C77F18D390020015B0DE /* Build configuration list for PBXNativeTarget "MagicBoord" */;
 			buildPhases = (
+				041D8551B2BD4FCAAD5FE411 /* Check Pods Manifest.lock */,
 				8700C74F18D390020015B0DE /* Sources */,
 				8700C75018D390020015B0DE /* Frameworks */,
 				8700C75118D390020015B0DE /* Resources */,
+				89A8340F6FB944419ABE1B50 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -225,8 +242,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8700C78C18D3EE940015B0DE /* iphone.storyboard in Resources */,
+				8700C79818D3F9ED0015B0DE /* CheckerBoard.png in Resources */,
 				8700C76118D390020015B0DE /* InfoPlist.strings in Resources */,
 				8700C76918D390020015B0DE /* Images.xcassets in Resources */,
+				8700C79018D3F1D60015B0DE /* redbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,13 +260,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		041D8551B2BD4FCAAD5FE411 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		89A8340F6FB944419ABE1B50 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8700C74F18D390020015B0DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8700C76718D390020015B0DE /* LCLAppDelegate.m in Sources */,
-				8700C78718D390840015B0DE /* LCLTip.m in Sources */,
+				8700C78A18D3A0DE0015B0DE /* LCLTip.m in Sources */,
 				8700C76318D390020015B0DE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +414,7 @@
 		};
 		8700C78018D390020015B0DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4235C290072749D69C5795B1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -374,6 +428,7 @@
 		};
 		8700C78118D390020015B0DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4235C290072749D69C5795B1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -444,6 +499,7 @@
 				8700C78118D390020015B0DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8700C78218D390020015B0DE /* Build configuration list for PBXNativeTarget "MagicBoordTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +508,7 @@
 				8700C78418D390020015B0DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

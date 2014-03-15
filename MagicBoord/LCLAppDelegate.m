@@ -7,15 +7,19 @@
 //
 
 #import "LCLAppDelegate.h"
+#import "LCLTip.h"
 
 @implementation LCLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    
+    [LCLTip registerSubclass];
+    [Parse setApplicationId:@"sQlOhsEuKc3PM0gZtoCNLPf6X4VVDdsVhqV1xKDU"
+                  clientKey:@"o5xMW54dBllSp2nSuU1aPBKotx3q2hxvzqsFoBWd"];
+    
+    [LCLTip tipWithText:@"Call someone important to you and let you know how much you care about them. Don’t call collect if you can’t afford it." Category:@"Personal"];
+    
     return YES;
 }
 
