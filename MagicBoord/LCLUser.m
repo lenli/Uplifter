@@ -9,8 +9,22 @@
 #import "LCLUser.h"
 
 @implementation LCLUser
-@dynamic tips;
+@synthesize tips = _tips;
 
+
+#pragma mark - Setters and Getters
+- (void) setTips:(PFRelation *)tips {
+    _tips = tips;
+}
+
+- (PFRelation *) tips{
+    if(_tips== nil) {
+        _tips = [self relationforKey:@"tips"];
+    }
+    return _tips;
+}
+
+#pragma mark - Initialization Methods
 + (instancetype)userWithUsername:(NSString *)username Password:(NSString *)password
 {
     return [[self alloc] initWithUsername:username Password:password];
@@ -22,16 +36,15 @@
     if (self) {
         self.username = username;
         self.password = password;
-        self.tips = [NSMutableArray new];
+        self.tips = [self relationForKey:@"tips"];
         [self signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 // Hooray! Let them use the app now.
                 [self saveInBackground];
             } else {
                 NSString *errorString = [error userInfo][@"error"];
-                NSLog(@"%@", errorString);
                 // Show the errorString somewhere and let the user try again.
-                
+                NSLog(@"%@", errorString);
             }
         }];
     }

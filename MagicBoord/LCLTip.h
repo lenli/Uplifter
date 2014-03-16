@@ -13,9 +13,9 @@
 
 @property (strong, nonatomic) NSString *tip;
 @property (strong, nonatomic) NSString *tipTitle;
-@property (strong, nonatomic) NSMutableArray *users;
-@property (strong, nonatomic) NSMutableArray *usersLiked;
-@property (strong, nonatomic) NSMutableArray *usersDisliked;
+@property (retain) PFRelation *users;
+@property (retain) PFRelation *usersLiked;
+@property (retain) PFRelation *usersDisliked;
 @property (nonatomic) NSInteger startHour;
 @property (nonatomic) NSInteger endHour;
 @property (strong, nonatomic) NSString *category;

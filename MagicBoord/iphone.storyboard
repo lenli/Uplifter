@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="-528" y="366"/>
         </scene>
-        <!--View Controller-->
+        <!--Tip View Controller-->
         <scene sceneID="6g3-X5-le7">
             <objects>
-                <viewController id="h51-mT-z3V" sceneMemberID="viewController">
+                <viewController id="h51-mT-z3V" customClass="LCLTipViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RBY-xI-yeP"/>
                         <viewControllerLayoutGuide type="bottom" id="Bsq-8J-TdH"/>
@@ -107,6 +107,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="J4d-jS-fUF"/>
+                    <connections>
+                        <outlet property="dislikeButton" destination="7C4-tD-mtq" id="7Ob-cg-sg9"/>
+                        <outlet property="likeButton" destination="wKE-Bc-Ypl" id="b0C-Tc-xbc"/>
+                        <outlet property="tipLabel" destination="DLT-NO-Lzc" id="KIM-Oq-IoR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-RE-sk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

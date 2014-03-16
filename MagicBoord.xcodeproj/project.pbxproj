@@ -24,6 +24,7 @@
 		8700C79018D3F1D60015B0DE /* redbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8700C78F18D3F1D60015B0DE /* redbutton.png */; };
 		8700C79818D3F9ED0015B0DE /* CheckerBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 8700C79718D3F9ED0015B0DE /* CheckerBoard.png */; };
 		8700C79B18D4C4E80015B0DE /* LCLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8700C79A18D4C4E80015B0DE /* LCLUser.m */; };
+		872F258F18D553BA005B36EC /* LCLTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 872F258E18D553BA005B36EC /* LCLTipViewController.m */; };
 		B87F568143F046749F92D76E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7846964CD4E41E789ADA9C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		8700C79718D3F9ED0015B0DE /* CheckerBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckerBoard.png; sourceTree = "<group>"; };
 		8700C79918D4C4E80015B0DE /* LCLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLUser.h; sourceTree = "<group>"; };
 		8700C79A18D4C4E80015B0DE /* LCLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLUser.m; sourceTree = "<group>"; };
+		872F258D18D553BA005B36EC /* LCLTipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipViewController.h; sourceTree = "<group>"; };
+		872F258E18D553BA005B36EC /* LCLTipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTipViewController.m; sourceTree = "<group>"; };
 		A7846964CD4E41E789ADA9C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -127,6 +130,7 @@
 			children = (
 				8700C76518D390020015B0DE /* LCLAppDelegate.h */,
 				8700C76618D390020015B0DE /* LCLAppDelegate.m */,
+				872F259018D553BF005B36EC /* Controllers */,
 				8700C79C18D4C4F10015B0DE /* Models */,
 				8700C78B18D3EE940015B0DE /* iphone.storyboard */,
 				8700C76818D390020015B0DE /* Images.xcassets */,
@@ -175,6 +179,15 @@
 				8700C78918D3A0DE0015B0DE /* LCLTip.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		872F259018D553BF005B36EC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				872F258D18D553BA005B36EC /* LCLTipViewController.h */,
+				872F258E18D553BA005B36EC /* LCLTipViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +334,7 @@
 				8700C76718D390020015B0DE /* LCLAppDelegate.m in Sources */,
 				8700C78A18D3A0DE0015B0DE /* LCLTip.m in Sources */,
 				8700C79B18D4C4E80015B0DE /* LCLUser.m in Sources */,
+				872F258F18D553BA005B36EC /* LCLTipViewController.m in Sources */,
 				8700C76318D390020015B0DE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

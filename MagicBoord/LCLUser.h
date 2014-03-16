@@ -9,7 +9,7 @@
 #import <Parse/Parse.h>
 
 @interface LCLUser : PFUser <PFSubclassing>
-@property (strong, nonatomic) NSMutableArray *tips;
+@property (retain) PFRelation *tips;
 
 + (instancetype)userWithUsername:(NSString *)username Password:(NSString *)password;
 - (instancetype)initWithUsername:(NSString *)username Password:(NSString *)password;

@@ -12,16 +12,52 @@
 @implementation LCLTip
 @dynamic tip;
 @dynamic tipTitle;
-@dynamic users;
-@dynamic usersLiked;
-@dynamic usersDisliked;
+@synthesize users = _users;
+@synthesize usersLiked = _usersLiked;
+@synthesize usersDisliked = _usersDisliked;
 @dynamic startHour;
 @dynamic endHour;
 @dynamic category;
 
+# pragma mark - Setters and Getters
 + (NSString *)parseClassName {
     return @"LCLTip";
 }
+
+- (void) setUsers:(PFRelation *)users {
+    _users = users;
+}
+
+- (PFRelation *) users{
+    if(_users== nil) {
+        _users = [self relationforKey:@"users"];
+    }
+    return _users;
+}
+
+- (void) setUsersLiked:(PFRelation *)usersLiked {
+    _usersLiked = usersLiked;
+}
+
+- (PFRelation *) usersLiked{
+    if(_usersLiked== nil) {
+        _usersLiked = [self relationforKey:@"usersLiked"];
+    }
+    return _usersLiked;
+}
+
+- (void) setUsersDisliked:(PFRelation *)usersDisliked {
+    _usersDisliked = usersDisliked;
+}
+
+- (PFRelation *) usersDisliked{
+    if(_usersDisliked== nil) {
+        _usersDisliked = [self relationforKey:@"usersDisliked"];
+    }
+    return _usersDisliked;
+}
+
+# pragma mark - Init Methods
 
 + (instancetype)tipWithText:(NSString *)tip Category:(NSString *)category
 {
@@ -34,9 +70,9 @@
     if (self) {
         self.tip = tip ? tip : @"";
         self.tipTitle = tip ? [self shortenString:tip ToWords:5] : @"";
-        self.users = [NSMutableArray new];
-        self.usersLiked = [NSMutableArray new];
-        self.usersDisliked = [NSMutableArray new];
+        self.users = [self relationForKey:@"users"];
+        self.usersLiked = [self relationForKey:@"usersLiked"];
+        self.usersDisliked = [self relationForKey:@"usersDislike"];
         self.startHour = 0;
         self.endHour = 0;
         self.category = category ? category : @"";
