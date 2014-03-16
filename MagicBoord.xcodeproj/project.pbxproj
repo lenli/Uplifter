@@ -227,6 +227,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Leonard Li";
 				TargetAttributes = {
+					8700C75218D390020015B0DE = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					8700C76D18D390020015B0DE = {
 						TestTargetID = 8700C75218D390020015B0DE;
 					};
