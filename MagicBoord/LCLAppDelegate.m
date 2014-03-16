@@ -22,6 +22,8 @@
                   clientKey:@"o5xMW54dBllSp2nSuU1aPBKotx3q2hxvzqsFoBWd"];
     
     [PFUser enableAutomaticUser];
+    [[PFUser currentUser] incrementKey:@"RunCount"];
+    [[PFUser currentUser] saveInBackground];
     
     PFACL *defaultACL = [PFACL ACL];
     
@@ -47,8 +49,14 @@
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
 
-    LCLTip *newTip = [LCLTip tipWithText:@"Call someone important to you and let you know how much you care about them. Don’t call collect if you can’t afford it." Category:@"Personal"];
-    LCLUser *newUser = [LCLUser userWithUsername:@"testing" Password:@"testing123"];
+//    LCLTip *newTip1 = [LCLTip tipWithText:@"Call someone important to you and let you know how much you care about them. Don’t call collect if you can’t afford it." Category:@"Personal"];
+//    LCLTip *newTip2 = [LCLTip tipWithText:@"Tell the person closest to you that their shoe is untied. When he or she looks down to check, giggle and shrug." Category:@"Personal"];
+//    LCLTip *newTip3 = [LCLTip tipWithText:@"Go to the coffee shop for a cup of brew.  Then strike up conversation with someone new." Category:@"Personal"];
+//    LCLTip *newTip4 = [LCLTip tipWithText:@"Do 20 push ups. Unless you are in a pool. Then just continue swimming." Category:@"Personal"];
+//    LCLTip *newTip5 = [LCLTip tipWithText:@"Try parting your hair differently.  See if anyone notices." Category:@"Personal"];
+//    LCLTip *newTip6 = [LCLTip tipWithText:@"Ahem. This is your mother. Go clean your room. Now." Category:@"Personal"];
+//    LCLTip *newTip7 = [LCLTip tipWithText:@"Look around. Is anybody near you? If not, fart. If someone is, fart, and then apologize." Category:@"Personal"];
+//    LCLUser *newUser = [LCLUser userWithUsername:@"testing" Password:@"testing123"];
 
     return YES;
 }

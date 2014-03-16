@@ -65,7 +65,7 @@
     NSUInteger randomIndex = arc4random_uniform([tipQuery countObjects]);
     [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         // get random tip
-        self.currentTip = [results objectAtIndex:randomIndex];
+        self.currentTip = results[randomIndex];
         self.tipLabel.text = self.currentTip.tip;
         
         // create relations between user and tip

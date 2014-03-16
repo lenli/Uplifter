@@ -1,1 +1,16 @@
-<?xml version='1.0' encoding='UTF-8'?><Workspace version='1.0'><FileRef location='group:MagicBoord.xcodeproj'/><FileRef location='group:Pods/Pods.xcodeproj'/></Workspace>
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:MagicBoord/LCLTipHistoryViewController.h">
+   </FileRef>
+   <FileRef
+      location = "group:MagicBoord/LCLTipHistoryViewController.m">
+   </FileRef>
+   <FileRef
+      location = "group:MagicBoord.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

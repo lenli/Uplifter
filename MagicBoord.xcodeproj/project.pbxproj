@@ -25,6 +25,8 @@
 		8700C79818D3F9ED0015B0DE /* CheckerBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 8700C79718D3F9ED0015B0DE /* CheckerBoard.png */; };
 		8700C79B18D4C4E80015B0DE /* LCLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8700C79A18D4C4E80015B0DE /* LCLUser.m */; };
 		872F258F18D553BA005B36EC /* LCLTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 872F258E18D553BA005B36EC /* LCLTipViewController.m */; };
+		876B51AF18D654DE0063C5E4 /* LCLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B51AE18D654DE0063C5E4 /* LCLMainViewController.m */; };
+		876B51B518D658A80063C5E4 /* LCLTipHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B51B418D658A80063C5E4 /* LCLTipHistoryViewController.m */; };
 		B87F568143F046749F92D76E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7846964CD4E41E789ADA9C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,10 @@
 		8700C79A18D4C4E80015B0DE /* LCLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLUser.m; sourceTree = "<group>"; };
 		872F258D18D553BA005B36EC /* LCLTipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipViewController.h; sourceTree = "<group>"; };
 		872F258E18D553BA005B36EC /* LCLTipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTipViewController.m; sourceTree = "<group>"; };
+		876B51AD18D654DE0063C5E4 /* LCLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLMainViewController.h; sourceTree = "<group>"; };
+		876B51AE18D654DE0063C5E4 /* LCLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLMainViewController.m; sourceTree = "<group>"; };
+		876B51B318D658A80063C5E4 /* LCLTipHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipHistoryViewController.h; sourceTree = "<group>"; };
+		876B51B418D658A80063C5E4 /* LCLTipHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTipHistoryViewController.m; sourceTree = "<group>"; };
 		A7846964CD4E41E789ADA9C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -184,8 +190,12 @@
 		872F259018D553BF005B36EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				876B51AD18D654DE0063C5E4 /* LCLMainViewController.h */,
+				876B51AE18D654DE0063C5E4 /* LCLMainViewController.m */,
 				872F258D18D553BA005B36EC /* LCLTipViewController.h */,
 				872F258E18D553BA005B36EC /* LCLTipViewController.m */,
+				876B51B318D658A80063C5E4 /* LCLTipHistoryViewController.h */,
+				876B51B418D658A80063C5E4 /* LCLTipHistoryViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -331,9 +341,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				876B51B518D658A80063C5E4 /* LCLTipHistoryViewController.m in Sources */,
 				8700C76718D390020015B0DE /* LCLAppDelegate.m in Sources */,
 				8700C78A18D3A0DE0015B0DE /* LCLTip.m in Sources */,
 				8700C79B18D4C4E80015B0DE /* LCLUser.m in Sources */,
+				876B51AF18D654DE0063C5E4 /* LCLMainViewController.m in Sources */,
 				872F258F18D553BA005B36EC /* LCLTipViewController.m in Sources */,
 				8700C76318D390020015B0DE /* main.m in Sources */,
 			);
