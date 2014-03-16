@@ -12,8 +12,10 @@
 + (NSString *)parseClassName;
 
 @property (strong, nonatomic) NSString *tip;
-@property (nonatomic) NSInteger numberOfLikes;
-@property (nonatomic) NSInteger numberOfDislikes;
+@property (strong, nonatomic) NSString *tipTitle;
+@property (strong, nonatomic) NSMutableArray *users;
+@property (strong, nonatomic) NSMutableArray *usersLiked;
+@property (strong, nonatomic) NSMutableArray *usersDisliked;
 @property (nonatomic) NSInteger startHour;
 @property (nonatomic) NSInteger endHour;
 @property (strong, nonatomic) NSString *category;
