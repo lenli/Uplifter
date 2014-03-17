@@ -81,6 +81,32 @@
     return self;
 }
 
++ (instancetype)tipWithText:(NSString *)tip Category:(NSString *)category User:(PFUser *)user
+{
+    return [[self alloc] initWithClassName:[LCLTip parseClassName] WithTip:tip WithCategory:category WithUser:user];
+}
+
+- (instancetype)initWithClassName:(NSString *)newClassName WithTip:(NSString *)tip WithCategory:(NSString *)category WithUser:(PFUser *)user
+{
+    self = [super init];
+    if (self) {
+        self.tip = tip ? tip : @"";
+        self.tipTitle = tip ? [self shortenString:tip ToWords:5] : @"";
+        self.users = [self relationForKey:@"users"];
+        self.usersLiked = [self relationForKey:@"usersLiked"];
+        self.usersDisliked = [self relationForKey:@"usersDislike"];
+        self.startHour = 0;
+        self.endHour = 0;
+        self.category = category ? category : @"";
+        [self.users addObject:user];
+        [self.usersLiked addObject:user];
+        [self.usersDisliked addObject:user];
+        
+        [self saveInBackground];
+    }
+    return self;
+}
+
 #pragma mark - Helper Methods
 
 - (NSString *)shortenString:(NSString *)longString ToWords:(NSInteger)numberOfWords

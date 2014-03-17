@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LCLTip.h"
+#import "LCLUser.h"
 
 @interface LCLTipViewController : UIViewController
 

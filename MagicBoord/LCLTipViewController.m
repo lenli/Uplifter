@@ -7,7 +7,7 @@
 //
 
 #import "LCLTipViewController.h"
-#import "LCLTip.h"
+
 
 @interface LCLTipViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
@@ -64,25 +64,50 @@
     PFQuery *tipQuery = [PFQuery queryWithClassName:@"LCLTip"];
     NSUInteger randomIndex = arc4random_uniform([tipQuery countObjects]);
     [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-        // get random tip
-        self.currentTip = results[randomIndex];
-        self.tipLabel.text = self.currentTip.tip;
-        
-        // create relations between user and tip
-        
-        [self hideLoadingMessage];
+        if (results) {
+            // get random tip
+            self.currentTip = results[randomIndex];
+            self.tipLabel.text = self.currentTip.tip;
+            
+            // create relations between user and tip
+            [self addTip:results[randomIndex] ToCurrentUserForRelation:@"tips"];
+            [self addCurrentUserToTip:results[randomIndex] ForRelation:@"users"];
+            
+            [self hideLoadingMessage];
+        }
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"likeButtonSegue"]) {
+        [self addCurrentUserToTip:self.currentTip ForRelation:@"usersLiked"];
+    } else if ([segue.identifier isEqualToString:@"dislikeButtonSegue"]) {
+        [self addCurrentUserToTip:self.currentTip ForRelation:@"usersDisliked"];
+    }
 }
-*/
+
+
+#pragma mark - Helper Methods
+
+- (void)addTip:(LCLTip *)tip ToCurrentUserForRelation:(NSString *)tipRelationString
+{
+    PFRelation *userTip = [[LCLUser currentUser] relationForKey:tipRelationString];
+    [userTip addObject:tip];
+    [[LCLUser currentUser] save];
+}
+
+- (void)addCurrentUserToTip:(LCLTip *)tip ForRelation:(NSString *)userRelationString
+{
+    PFRelation *tipUser = [tip relationForKey:userRelationString];
+    [tipUser addObject:[LCLUser currentUser]];
+    [tip save];
+}
 
 @end

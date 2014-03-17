@@ -26,13 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        if (error) {
-            NSLog(@"Anonymous login failed.");
-        } else {
-            NSLog(@"Anonymous user logged in.");
-        }
-    }];
+
     // Do any additional setup after loading the view.
 }
 
