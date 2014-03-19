@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LCLUser.h"
+#import "LCLTip.h"
 
-@interface LCLTipHistoryViewController : UIViewController
+@interface LCLTipHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

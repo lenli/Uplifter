@@ -70,12 +70,20 @@
             self.tipLabel.text = self.currentTip.tip;
             
             // create relations between user and tip
-            [self addTip:results[randomIndex] ToCurrentUserForRelation:@"tips"];
-            [self addCurrentUserToTip:results[randomIndex] ForRelation:@"users"];
+            NSLog(@"Adding Tip To User");
+            [self addTip:self.currentTip ToCurrentUserForRelation:@"tips"];
             
+            NSLog(@"Adding User To Tip");
+            [self addCurrentUserToTip:self.currentTip ForRelation:@"users"];
+            
+            NSLog(@"Done Adding");
             [self hideLoadingMessage];
         }
+        if (error) {
+            NSLog(@"Error Getting Tips: %@", error);
+        }
     }];
+    
 }
 
 

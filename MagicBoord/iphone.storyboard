@@ -247,12 +247,21 @@
                                     <constraint firstAttribute="width" constant="320" id="qQe-2Q-EzY"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tipCell" id="lJf-kE-Ekx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tipCell" textLabel="59p-mL-1Kx" style="IBUITableViewCellStyleDefault" id="lJf-kE-Ekx">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lJf-kE-Ekx" id="pA7-Kb-2P8">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="59p-mL-1Kx">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -267,6 +276,9 @@
                             <constraint firstItem="2JN-sV-Cxw" firstAttribute="top" secondItem="HBn-Y1-5Wo" secondAttribute="bottom" id="ehl-K8-G52"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableview" destination="ISy-WG-EI5" id="Kdb-t7-jQr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PZ-Du-QyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
