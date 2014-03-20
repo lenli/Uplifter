@@ -10,7 +10,6 @@
 
 @interface LCLTipHistoryViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (strong, nonatomic) NSArray *tipsForUser;
 
 @end
 
@@ -31,17 +30,36 @@
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     
+    [MBProgressHUDHelpers showLoadingMessageForView:self.view];
+    [self getTipsForKey:@"users" Completion:^(NSArray *tips) {
+        self.tipsForUser = tips;
+        [self getTipsForKey:@"usersLiked" Completion:^(NSArray *tips) {
+            self.tipsUserLiked = tips;
+            [self getTipsForKey:@"usersDisliked" Completion:^(NSArray *tips) {
+                self.tipsUserDisliked = tips;
+                [self.tableview reloadData];
+                [MBProgressHUDHelpers hideLoadingMessageForView:self.view];
+            }];
+        }];
+    }];
+
+
+    
+    // Do any additional setup after loading the view.
+}
+
+- (void)getTipsForKey:(NSString *)keyString Completion:(void (^)(NSArray *))completionBlock
+{
     PFQuery *tipQuery = [LCLTip query];
-    [tipQuery whereKey:@"users" equalTo:[PFUser currentUser]];
+    [tipQuery whereKey:keyString equalTo:[PFUser currentUser]];
     
     [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         if (results) {
-            self.tipsForUser = results;
-            [self.tableview reloadData];
+            completionBlock(results);
+        } else {
+            completionBlock(@[]);
         }
     }];
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,14 +80,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *CellIdentifier = @"tipCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     LCLTip *currentTip = [self tipsForUser][indexPath.row];
-    NSLog(@"%@", currentTip);
+    
     cell.userInteractionEnabled = NO;
     cell.textLabel.text = currentTip.tipTitle;
-    
+//    if ([self.tipsUserDisliked containsObject:currentTip]) {
+//        cell.textLabel.textColor = [UIColor whiteColor];
+//        [cell setBackgroundColor:[UIColor colorWithRed:(230/255.0) green:(196/255.0) blue:(15/255) alpha:1]];
+//    } else if ([self.tipsUserLiked containsObject:currentTip]) {
+        cell.textLabel.textColor = [UIColor whiteColor];
+        [cell setBackgroundColor:[UIColor colorWithRed:(39/255.0) green:(174/255.0) blue:(96/255) alpha:1]];
+//    }
     return cell;
 }
 
