@@ -8,13 +8,11 @@
 
 #import "LCLTipViewController.h"
 
-
 @interface LCLTipViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (strong, nonatomic) LCLTip *currentTip;
-@property (strong, nonatomic) NSArray *allTips;
 
 @end
 
@@ -34,7 +32,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    [MBProgressHUDHelpers showLoadingMessageForView:self.view];
+    [MBProgressHUD showLoadingMessage:@"Loading" ForView:self.view];
     [self getRandomTip];
 
 }
@@ -56,17 +54,8 @@
             // get random tip
             self.currentTip = results[randomIndex];
             self.tipLabel.text = self.currentTip.tip;
-            
-            // create relations between user and tip
             [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.currentTip Rating:@0];
-            
-            NSLog(@"Adding Tip To User");
-            [self addTip:self.currentTip ToCurrentUserForRelation:@"tips"];
-            
-            NSLog(@"Adding User To Tip");
-            [self addCurrentUserToTip:self.currentTip ForRelation:@"users"];
-            NSLog(@"Done Adding");
-            [MBProgressHUDHelpers hideLoadingMessageForView:self.view];
+            [MBProgressHUD hideLoadingMessageForView:self.view];
         }
         if (error) {
             NSLog(@"Error Getting Tips: %@", error);
@@ -76,38 +65,22 @@
 }
 
 
-#pragma mark - Navigation
+#pragma mark - IBActions Methods
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (IBAction)likeButtonPressed:(UIButton *)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     
-    if ([segue.identifier isEqualToString:@"likeButtonSegue"]) {
-        [self addCurrentUserToTip:self.currentTip ForRelation:@"usersLiked"];
-        [LCLRating updateRating:@1 ForUser:[LCLUser currentUser] AndTip:self.currentTip];
-        
-    } else if ([segue.identifier isEqualToString:@"dislikeButtonSegue"]) {
-        [self addCurrentUserToTip:self.currentTip ForRelation:@"usersDisliked"];
-        [LCLRating updateRating:@-1 ForUser:[LCLUser currentUser] AndTip:self.currentTip];
-    }
+    [LCLRating updateRating:@1 ForUser:[LCLUser currentUser] AndTip:self.currentTip];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSegueWithIdentifier:@"likeButtonSegue" sender:sender];
+    });
 }
-
-
-#pragma mark - Helper Methods
-
-- (void)addTip:(LCLTip *)tip ToCurrentUserForRelation:(NSString *)tipRelationString
+- (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
-    PFRelation *userTip = [[LCLUser currentUser] relationForKey:tipRelationString];
-    [userTip addObject:tip];
-    [[LCLUser currentUser] save];
-}
-
-- (void)addCurrentUserToTip:(LCLTip *)tip ForRelation:(NSString *)userRelationString
-{
-    PFRelation *tipUser = [tip relationForKey:userRelationString];
-    [tipUser addObject:[LCLUser currentUser]];
-    [tip save];
+    [LCLRating updateRating:@-1 ForUser:[LCLUser currentUser] AndTip:self.currentTip];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSegueWithIdentifier:@"dislikeButtonSegue" sender:sender];
+    });
 }
 
 @end

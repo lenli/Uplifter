@@ -30,34 +30,34 @@
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     
-    [MBProgressHUDHelpers showLoadingMessageForView:self.view];
-    [self getTipsForKey:@"users" Completion:^(NSArray *tips) {
-        self.tipsForUser = tips;
-        [self getTipsForKey:@"usersLiked" Completion:^(NSArray *tips) {
-            self.tipsUserLiked = tips;
-            [self getTipsForKey:@"usersDisliked" Completion:^(NSArray *tips) {
-                self.tipsUserDisliked = tips;
-                [self.tableview reloadData];
-                [MBProgressHUDHelpers hideLoadingMessageForView:self.view];
-            }];
-        }];
+    [MBProgressHUD showLoadingMessage:@"Loading" ForView:self.view];
+    [self getTipsWIthCompletion:^(NSArray *ratings) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.ratingsForUser = ratings;
+            [self.tableview reloadData];
+            [MBProgressHUD hideLoadingMessageForView:self.view];
+        });
     }];
 
-
     
-    // Do any additional setup after loading the view.
 }
 
-- (void)getTipsForKey:(NSString *)keyString Completion:(void (^)(NSArray *))completionBlock
+- (void)getTipsWIthCompletion:(void (^)(NSArray *))completionBlock
 {
-    PFQuery *tipQuery = [LCLTip query];
-    [tipQuery whereKey:keyString equalTo:[PFUser currentUser]];
+    PFQuery *ratingQuery = [LCLRating query];
+    [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
+    [ratingQuery orderByDescending:@"createdAt"];
     
-    [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-        if (results) {
-            completionBlock(results);
+    [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
+        if (!error) {
+            NSMutableArray *tips = [NSMutableArray new];
+            for (LCLRating *rating in ratings) {
+                [tips addObject:rating.tip];
+            }
+            [LCLTip fetchAllIfNeeded:tips];
+            completionBlock(ratings);
         } else {
-            completionBlock(@[]);
+            NSLog(@"Ratings Not Found for User");
         }
     }];
 }
@@ -75,7 +75,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self tipsForUser] count];
+    return [[self ratingsForUser] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,21 +84,26 @@
     static NSString *CellIdentifier = @"tipCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    LCLTip *currentTip = [self tipsForUser][indexPath.row];
+    LCLRating *currentRating = [self ratingsForUser][indexPath.row];
+    LCLTip *currentTip = currentRating.tip;
     
     cell.userInteractionEnabled = NO;
     cell.textLabel.text = currentTip.tipTitle;
-//    if ([self.tipsUserDisliked containsObject:currentTip]) {
-//        cell.textLabel.textColor = [UIColor whiteColor];
-//        [cell setBackgroundColor:[UIColor colorWithRed:(230/255.0) green:(196/255.0) blue:(15/255) alpha:1]];
-//    } else if ([self.tipsUserLiked containsObject:currentTip]) {
-        cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    
+    if ([currentRating.rating integerValue] == 1) {
         [cell setBackgroundColor:[UIColor colorWithRed:(39/255.0) green:(174/255.0) blue:(96/255) alpha:1]];
-//    }
+    } else if ([currentRating.rating integerValue] == -1) {
+        [cell setBackgroundColor:[UIColor colorWithRed:(230/255.0) green:(196/255.0) blue:(15/255) alpha:1]];
+    } else {
+        [cell setBackgroundColor:[UIColor lightGrayColor]];
+    }
+    
     return cell;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableview reloadData];
     return nil;
 }
 

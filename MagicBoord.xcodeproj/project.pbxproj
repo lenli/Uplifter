@@ -27,8 +27,8 @@
 		872F258F18D553BA005B36EC /* LCLTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 872F258E18D553BA005B36EC /* LCLTipViewController.m */; };
 		876B51AF18D654DE0063C5E4 /* LCLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B51AE18D654DE0063C5E4 /* LCLMainViewController.m */; };
 		876B51B518D658A80063C5E4 /* LCLTipHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B51B418D658A80063C5E4 /* LCLTipHistoryViewController.m */; };
-		876B521518DA33D70063C5E4 /* MBProgressHUDHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B521418DA33D70063C5E4 /* MBProgressHUDHelpers.m */; };
 		876B521818DA8C5F0063C5E4 /* LCLRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B521718DA8C5F0063C5E4 /* LCLRating.m */; };
+		87AF7AF918DB7DA6001C6FCC /* MBProgressHUD+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */; };
 		B87F568143F046749F92D76E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7846964CD4E41E789ADA9C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,10 +73,10 @@
 		876B51AE18D654DE0063C5E4 /* LCLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLMainViewController.m; sourceTree = "<group>"; };
 		876B51B318D658A80063C5E4 /* LCLTipHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipHistoryViewController.h; sourceTree = "<group>"; };
 		876B51B418D658A80063C5E4 /* LCLTipHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTipHistoryViewController.m; sourceTree = "<group>"; };
-		876B521318DA33D70063C5E4 /* MBProgressHUDHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUDHelpers.h; sourceTree = "<group>"; };
-		876B521418DA33D70063C5E4 /* MBProgressHUDHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUDHelpers.m; sourceTree = "<group>"; };
 		876B521618DA8C5F0063C5E4 /* LCLRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLRating.h; sourceTree = "<group>"; };
 		876B521718DA8C5F0063C5E4 /* LCLRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLRating.m; sourceTree = "<group>"; };
+		87AF7AF718DB7DA6001C6FCC /* MBProgressHUD+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Helpers.h"; sourceTree = "<group>"; };
+		87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Helpers.m"; sourceTree = "<group>"; };
 		A7846964CD4E41E789ADA9C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -142,9 +142,9 @@
 			children = (
 				8700C76518D390020015B0DE /* LCLAppDelegate.h */,
 				8700C76618D390020015B0DE /* LCLAppDelegate.m */,
-				872F259018D553BF005B36EC /* Controllers */,
 				8700C79C18D4C4F10015B0DE /* Models */,
 				8700C78B18D3EE940015B0DE /* iphone.storyboard */,
+				872F259018D553BF005B36EC /* Controllers */,
 				8700C76818D390020015B0DE /* Images.xcassets */,
 				8700C75D18D390020015B0DE /* Supporting Files */,
 			);
@@ -185,8 +185,8 @@
 		8700C79C18D4C4F10015B0DE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				876B521318DA33D70063C5E4 /* MBProgressHUDHelpers.h */,
-				876B521418DA33D70063C5E4 /* MBProgressHUDHelpers.m */,
+				87AF7AF718DB7DA6001C6FCC /* MBProgressHUD+Helpers.h */,
+				87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */,
 				8700C79918D4C4E80015B0DE /* LCLUser.h */,
 				8700C79A18D4C4E80015B0DE /* LCLUser.m */,
 				8700C78818D3A0DE0015B0DE /* LCLTip.h */,
@@ -353,11 +353,11 @@
 			files = (
 				876B51B518D658A80063C5E4 /* LCLTipHistoryViewController.m in Sources */,
 				8700C76718D390020015B0DE /* LCLAppDelegate.m in Sources */,
-				876B521518DA33D70063C5E4 /* MBProgressHUDHelpers.m in Sources */,
 				8700C78A18D3A0DE0015B0DE /* LCLTip.m in Sources */,
 				8700C79B18D4C4E80015B0DE /* LCLUser.m in Sources */,
 				876B51AF18D654DE0063C5E4 /* LCLMainViewController.m in Sources */,
 				876B521818DA8C5F0063C5E4 /* LCLRating.m in Sources */,
+				87AF7AF918DB7DA6001C6FCC /* MBProgressHUD+Helpers.m in Sources */,
 				872F258F18D553BA005B36EC /* LCLTipViewController.m in Sources */,
 				8700C76318D390020015B0DE /* main.m in Sources */,
 			);

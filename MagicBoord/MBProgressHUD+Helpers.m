@@ -1,18 +1,18 @@
 //
-//  MBProgressBarHelpers.m
+//  MBProgressHUD+Helpers.m
 //  MagicBoord
 //
-//  Created by Leonard Li on 3/19/14.
+//  Created by Leonard Li on 3/20/14.
 //  Copyright (c) 2014 Leonard Li. All rights reserved.
 //
 
-#import "MBProgressHUDHelpers.h"
+#import "MBProgressHUD+Helpers.h"
 
-@implementation MBProgressHUDHelpers
-+ (void)showLoadingMessageForView:(UIView *)view
+@implementation MBProgressHUD (Helpers)
++ (void)showLoadingMessage:(NSString *)messageString ForView:(UIView *)view;
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.labelText = @"Loading";
+    hud.labelText = messageString;
 }
 
 + (void)hideLoadingMessageForView:(UIView *)view
