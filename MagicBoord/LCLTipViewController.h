@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LCLTip.h"
 #import "LCLUser.h"
+#import "LCLRating.h"
+#import "MBProgressHUDHelpers.h"
 
 @interface LCLTipViewController : UIViewController
 

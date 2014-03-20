@@ -8,12 +8,18 @@
 
 
 #import <Parse/Parse.h>
+#import "LCLTip.h"
+#import "LCLUser.h"
 
-@interface LCLRating : PFUser <PFSubclassing>
+@interface LCLRating : PFObject <PFSubclassing>
+@property (strong, nonatomic) LCLUser *user;
+@property (strong, nonatomic) LCLTip *tip;
+@property (strong, nonatomic) NSNumber *rating;
 
 
-+ (instancetype)ratingWithUser:(NSString *)username Password:(NSString *)password;
-- (instancetype)initWithUsername:(NSString *)username Password:(NSString *)password;
++ (void)updateRating:(NSNumber *)ratingNumber ForUser:(LCLUser *)user AndTip:(LCLTip *)tip;
++ (instancetype)ratingWithUser:(LCLUser *)user Tip:(LCLTip *)tip Rating:(NSNumber *)rating;
+- (instancetype)initWithUser:(LCLUser *)user Tip:(LCLTip *)tip Rating:(NSNumber *)rating;
+
 
 @end
-

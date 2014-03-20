@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    [self displayLoadingMessage];
+    [MBProgressHUDHelpers showLoadingMessageForView:self.view];
     [self getRandomTip];
 
 }
@@ -47,18 +47,6 @@
 
 
 #pragma mark - Helper Methods
-
-- (void)displayLoadingMessage
-{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading";
-}
-
-- (void)hideLoadingMessage
-{
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-}
-
 - (void)getRandomTip
 {
     PFQuery *tipQuery = [PFQuery queryWithClassName:@"LCLTip"];
@@ -70,14 +58,15 @@
             self.tipLabel.text = self.currentTip.tip;
             
             // create relations between user and tip
+            [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.currentTip Rating:@0];
+            
             NSLog(@"Adding Tip To User");
             [self addTip:self.currentTip ToCurrentUserForRelation:@"tips"];
             
             NSLog(@"Adding User To Tip");
             [self addCurrentUserToTip:self.currentTip ForRelation:@"users"];
-            
             NSLog(@"Done Adding");
-            [self hideLoadingMessage];
+            [MBProgressHUDHelpers hideLoadingMessageForView:self.view];
         }
         if (error) {
             NSLog(@"Error Getting Tips: %@", error);
@@ -96,8 +85,11 @@
     
     if ([segue.identifier isEqualToString:@"likeButtonSegue"]) {
         [self addCurrentUserToTip:self.currentTip ForRelation:@"usersLiked"];
+        [LCLRating updateRating:@1 ForUser:[LCLUser currentUser] AndTip:self.currentTip];
+        
     } else if ([segue.identifier isEqualToString:@"dislikeButtonSegue"]) {
         [self addCurrentUserToTip:self.currentTip ForRelation:@"usersDisliked"];
+        [LCLRating updateRating:@-1 ForUser:[LCLUser currentUser] AndTip:self.currentTip];
     }
 }
 
