@@ -68,16 +68,6 @@
 
 -(void)createData
 {
-    
-    PFQuery *ratingQuery = [LCLRating query];
-    [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
-        if ([ratings count] > 0) {
-            NSLog(@"Ratings Exist");
-        } else {
-            NSLog(@"No Ratings Exist");
-        }
-    }];
-    
     PFQuery *tipQuery = [LCLTip query];
     [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *tips, NSError *error) {
         if ([tips count] > 0) {

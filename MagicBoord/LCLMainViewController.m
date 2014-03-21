@@ -35,6 +35,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)resetButtonPressed:(UIButton *)sender
+{
+    [MBProgressHUD showLoadingMessage:@"Resetting Tips" ForView:self.view];
+    PFQuery *ratingQuery = [PFQuery queryWithClassName:@"LCLRating"];
+    [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
+    [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
+        if (!error) {
+            for (LCLRating *rating in ratings) {
+                [rating deleteInBackground];
+            }
+        } else {
+            NSLog(@"Ratings not found for delete");
+        }
+        [MBProgressHUD hideLoadingMessageForView:self.view];
+        
+    }];
+}
 
 /*
 #pragma mark - Navigation

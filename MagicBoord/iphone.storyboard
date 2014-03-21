@@ -48,6 +48,16 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoL-av-Hbs">
+                                        <rect key="frame" x="140" y="350" width="40" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetButtonPressed:" destination="sG4-Ma-DAY" eventType="touchUpInside" id="OWx-Ws-pC0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -59,6 +69,8 @@
                                     <constraint firstItem="ccr-6o-vTo" firstAttribute="top" secondItem="U5Q-Yz-0QU" secondAttribute="bottom" constant="24" id="WuS-fD-2lz"/>
                                     <constraint firstItem="U5Q-Yz-0QU" firstAttribute="leading" secondItem="kWa-Lo-9JZ" secondAttribute="leading" constant="70" id="X2a-WB-7lL"/>
                                     <constraint firstAttribute="centerY" secondItem="U5Q-Yz-0QU" secondAttribute="centerY" constant="6" id="ao0-Ra-PNB"/>
+                                    <constraint firstItem="RoL-av-Hbs" firstAttribute="top" secondItem="ccr-6o-vTo" secondAttribute="bottom" constant="-17" id="tBb-EY-cyg"/>
+                                    <constraint firstAttribute="centerX" secondItem="RoL-av-Hbs" secondAttribute="centerX" id="xIi-Wd-LMg"/>
                                     <constraint firstAttribute="centerX" secondItem="U5Q-Yz-0QU" secondAttribute="centerX" id="xfT-Zm-Y0Q"/>
                                     <constraint firstItem="Xr5-wR-YX9" firstAttribute="top" secondItem="kWa-Lo-9JZ" secondAttribute="top" constant="20" symbolic="YES" id="z44-Mr-aYZ"/>
                                 </constraints>
@@ -70,10 +82,11 @@
                             <constraint firstAttribute="centerY" secondItem="kWa-Lo-9JZ" secondAttribute="centerY" constant="6" id="pEo-DL-kDX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HFO-Xr-sPq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF4-zi-uYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-862" y="170"/>
+            <point key="canvasLocation" x="-336" y="170"/>
         </scene>
         <!--Tip View Controller-->
         <scene sceneID="6g3-X5-le7">
@@ -173,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-RE-sk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-331" y="165"/>
+            <point key="canvasLocation" x="195" y="165"/>
         </scene>
         <!--Tip History View Controller-->
         <scene sceneID="Aov-ff-520">
@@ -214,29 +227,35 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share it with your friends." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="9AW-3a-uE2">
-                                        <rect key="frame" x="20" y="190" width="280" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-de-7yr">
+                                        <rect key="frame" x="20" y="190" width="280" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="Gej-W4-7AD"/>
-                                            <constraint firstAttribute="width" constant="280" id="oKo-oo-bYS"/>
+                                            <constraint firstAttribute="width" constant="280" id="AsG-5l-VVx"/>
+                                            <constraint firstAttribute="height" constant="34" id="BkN-EX-1mk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="Share it with your friends.">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dislikeButtonPressed:" destination="h51-mT-z3V" eventType="touchUpInside" id="uXh-zj-7W8"/>
+                                            <segue destination="sG4-Ma-DAY" kind="modal" identifier="startoverSegue" id="Lvy-Py-paL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="9AW-3a-uE2" firstAttribute="top" secondItem="XDa-k3-0ng" secondAttribute="bottom" constant="8" id="JZw-Gi-mnH"/>
+                                    <constraint firstItem="ygs-de-7yr" firstAttribute="top" secondItem="XDa-k3-0ng" secondAttribute="bottom" constant="8" id="Klv-cd-Ox8"/>
                                     <constraint firstItem="Oki-yP-tr0" firstAttribute="top" secondItem="5f7-EZ-FDm" secondAttribute="bottom" constant="10" id="Ott-YH-aGe"/>
                                     <constraint firstAttribute="centerX" secondItem="5f7-EZ-FDm" secondAttribute="centerX" id="QvB-0H-eeS"/>
                                     <constraint firstAttribute="centerX" secondItem="Oki-yP-tr0" secondAttribute="centerX" id="SWC-Iu-HOD"/>
                                     <constraint firstAttribute="width" constant="320" id="X2q-YK-FJW"/>
-                                    <constraint firstAttribute="centerX" secondItem="9AW-3a-uE2" secondAttribute="centerX" id="cno-lR-PHW"/>
                                     <constraint firstItem="5f7-EZ-FDm" firstAttribute="top" secondItem="2JN-sV-Cxw" secondAttribute="top" constant="45" id="kN4-cI-4rZ"/>
                                     <constraint firstAttribute="height" constant="320" id="kPY-yV-a71"/>
+                                    <constraint firstAttribute="centerX" secondItem="ygs-de-7yr" secondAttribute="centerX" id="m3F-pm-jtU"/>
                                     <constraint firstAttribute="centerX" secondItem="XDa-k3-0ng" secondAttribute="centerX" id="tgt-gG-O0A"/>
                                     <constraint firstItem="XDa-k3-0ng" firstAttribute="top" secondItem="Oki-yP-tr0" secondAttribute="bottom" constant="27" id="uHL-mu-jzG"/>
                                 </constraints>
@@ -285,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PZ-Du-QyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="149" y="170"/>
+            <point key="canvasLocation" x="675" y="170"/>
         </scene>
     </scenes>
     <resources>
