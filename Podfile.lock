@@ -16,18 +16,21 @@ PODS:
   - FontAwesomeKit/Zocial (2.1.5):
     - FontAwesomeKit/Core
   - MBProgressHUD (0.8)
+  - MZTimerLabel (0.3)
   - Parse (1.2.18):
     - Facebook-iOS-SDK (~> 3.11)
 
 DEPENDENCIES:
   - FontAwesomeKit (~> 2.1.0)
   - MBProgressHUD (~> 0.8)
+  - MZTimerLabel (~> 0.3)
   - Parse
 
 SPEC CHECKSUMS:
   Facebook-iOS-SDK: 5788541337dc88265bc940cb5ffb05915f9b64e3
   FontAwesomeKit: 7d935e100337d503bdaefde2ea16be740b81ed13
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
+  MZTimerLabel: 63fe3be739b6c832c2890dd4909d5a05407e3d12
   Parse: 6dd57f2af9f89dc6facc755cec4e96f8b739b1fb
 
 COCOAPODS: 0.29.0

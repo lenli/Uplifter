@@ -36,7 +36,7 @@
     return self;
 };
 
-+ (void)updateRating:(NSNumber *)ratingNumber ForUser:(LCLUser *)user AndTip:(LCLTip *)tip
++ (void)updateRating:(NSNumber *)ratingNumber ForUser:(LCLUser *)user AndTip:(LCLTip *)tip WithCompletion:(void (^)(BOOL))completionBlock
 {
     PFQuery *ratingQuery = [PFQuery queryWithClassName:@"LCLRating"];
     [ratingQuery whereKey:@"user" equalTo:user];
@@ -45,10 +45,34 @@
         if (!error) {
             [ratingObject setObject:ratingNumber forKey:@"rating"];
             [ratingObject save];
+            completionBlock(YES);
         } else {
             NSLog(@"Could not find Rating For User %@ and Tip %@", user, tip);
         }
     }];
 };
+
++ (void)getTimeSinceLastTipForUser:(LCLUser *)user WithCompletion:(void (^)(NSNumber *))completionBlock
+{
+    
+    PFQuery *ratingQuery = [self query];
+    [ratingQuery whereKey:@"user" equalTo:user];
+    [ratingQuery orderByDescending:@"createdAt"];
+    [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
+        LCLRating *lastRating = [ratings firstObject];
+        NSTimeInterval secondsSinceLastTip = [[NSDate date] timeIntervalSinceDate:lastRating.createdAt];
+        completionBlock(@(secondsSinceLastTip));
+    }];
+    
+}
+
++ (BOOL)checkIfUser:(LCLUser *)user HasSeenTip:(LCLTip *)tip
+{
+    PFQuery *ratingQuery = [self query];
+    [ratingQuery whereKey:@"user" equalTo:user];
+    [ratingQuery whereKey:@"tip" equalTo:tip];
+    
+    return [[ratingQuery findObjects] count] == 0 ? YES : NO;
+}
 
 @end

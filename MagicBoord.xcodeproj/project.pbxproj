@@ -29,6 +29,7 @@
 		876B51B518D658A80063C5E4 /* LCLTipHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B51B418D658A80063C5E4 /* LCLTipHistoryViewController.m */; };
 		876B521818DA8C5F0063C5E4 /* LCLRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B521718DA8C5F0063C5E4 /* LCLRating.m */; };
 		87AF7AF918DB7DA6001C6FCC /* MBProgressHUD+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */; };
+		87AF7AFC18DB8484001C6FCC /* LCLTipsDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7AFB18DB8484001C6FCC /* LCLTipsDataStore.m */; };
 		B87F568143F046749F92D76E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7846964CD4E41E789ADA9C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,8 @@
 		876B521718DA8C5F0063C5E4 /* LCLRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLRating.m; sourceTree = "<group>"; };
 		87AF7AF718DB7DA6001C6FCC /* MBProgressHUD+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Helpers.h"; sourceTree = "<group>"; };
 		87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Helpers.m"; sourceTree = "<group>"; };
+		87AF7AFA18DB8484001C6FCC /* LCLTipsDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipsDataStore.h; sourceTree = "<group>"; };
+		87AF7AFB18DB8484001C6FCC /* LCLTipsDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTipsDataStore.m; sourceTree = "<group>"; };
 		A7846964CD4E41E789ADA9C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -193,6 +196,8 @@
 				8700C78918D3A0DE0015B0DE /* LCLTip.m */,
 				876B521618DA8C5F0063C5E4 /* LCLRating.h */,
 				876B521718DA8C5F0063C5E4 /* LCLRating.m */,
+				87AF7AFA18DB8484001C6FCC /* LCLTipsDataStore.h */,
+				87AF7AFB18DB8484001C6FCC /* LCLTipsDataStore.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				ORGANIZATIONNAME = "Leonard Li";
 				TargetAttributes = {
 					8700C75218D390020015B0DE = {
+						DevelopmentTeam = D3R2N4L8FQ;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -358,6 +364,7 @@
 				876B51AF18D654DE0063C5E4 /* LCLMainViewController.m in Sources */,
 				876B521818DA8C5F0063C5E4 /* LCLRating.m in Sources */,
 				87AF7AF918DB7DA6001C6FCC /* MBProgressHUD+Helpers.m in Sources */,
+				87AF7AFC18DB8484001C6FCC /* LCLTipsDataStore.m in Sources */,
 				872F258F18D553BA005B36EC /* LCLTipViewController.m in Sources */,
 				8700C76318D390020015B0DE /* main.m in Sources */,
 			);
@@ -477,6 +484,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Leonard Li (HCN3MGAT6U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MagicBoord/MagicBoord-Prefix.pch";
 				INFOPLIST_FILE = "MagicBoord/MagicBoord-Info.plist";
@@ -491,6 +499,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Leonard Li (HCN3MGAT6U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MagicBoord/MagicBoord-Prefix.pch";
 				INFOPLIST_FILE = "MagicBoord/MagicBoord-Info.plist";

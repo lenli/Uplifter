@@ -17,9 +17,10 @@
 @property (strong, nonatomic) NSNumber *rating;
 
 
-+ (void)updateRating:(NSNumber *)ratingNumber ForUser:(LCLUser *)user AndTip:(LCLTip *)tip;
++ (void)updateRating:(NSNumber *)ratingNumber ForUser:(LCLUser *)user AndTip:(LCLTip *)tip WithCompletion:(void (^)(BOOL success))completionBlock;
 + (instancetype)ratingWithUser:(LCLUser *)user Tip:(LCLTip *)tip Rating:(NSNumber *)rating;
 - (instancetype)initWithUser:(LCLUser *)user Tip:(LCLTip *)tip Rating:(NSNumber *)rating;
-
++ (void)getTimeSinceLastTipForUser:(LCLUser *)user WithCompletion:(void (^)(NSNumber *seconds))completionBlock;
++ (BOOL)checkIfUser:(LCLUser *)user HasSeenTip:(LCLTip *)tip;
 
 @end

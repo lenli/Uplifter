@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LCLUser.h"
-#import "LCLTip.h"
-#import "LCLRating.h"
-#import "MBProgressHUD+Helpers.h"
+#import "LCLTipsDataStore.h"
 
 @interface LCLTipHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSArray *ratingsForUser;
+@property (strong, nonatomic) LCLTipsDataStore *dataStore;
+extern NSInteger const TIMER_WAIT_TIME_SECONDS;
 
 @end

@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LCLTip.h"
-#import "LCLUser.h"
-#import "LCLRating.h"
-#import "MBProgressHUD+Helpers.h"
+#import "LCLTipsDataStore.h"
 
 @interface LCLTipViewController : UIViewController
+@property (strong, nonatomic) LCLTipsDataStore *dataStore;
 
 @end

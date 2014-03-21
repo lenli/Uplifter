@@ -15,4 +15,5 @@
     #import <Foundation/Foundation.h>
     #import <Parse/Parse.h>
     #import "MBProgressHUD+Helpers.h"
+    #import "MZTimerLabel.h"
 #endif

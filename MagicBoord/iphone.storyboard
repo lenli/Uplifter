@@ -279,6 +279,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countdownLabel" destination="Oki-yP-tr0" id="PJj-zE-2qi"/>
                         <outlet property="tableview" destination="ISy-WG-EI5" id="Kdb-t7-jQr"/>
                     </connections>
                 </viewController>

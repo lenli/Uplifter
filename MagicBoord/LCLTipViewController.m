@@ -12,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (strong, nonatomic) LCLTip *currentTip;
 
 @end
 
@@ -30,9 +29,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.dataStore = [LCLTipsDataStore sharedDataStore];
     // Do any additional setup after loading the view.
-    [MBProgressHUD showLoadingMessage:@"Loading" ForView:self.view];
+    [MBProgressHUD showLoadingMessage:@"Randomizing" ForView:self.view];
+    
     [self getRandomTip];
 
 }
@@ -47,14 +47,25 @@
 #pragma mark - Helper Methods
 - (void)getRandomTip
 {
+    
     PFQuery *tipQuery = [PFQuery queryWithClassName:@"LCLTip"];
-    NSUInteger randomIndex = arc4random_uniform([tipQuery countObjects]);
+    
     [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         if (results) {
             // get random tip
-            self.currentTip = results[randomIndex];
-            self.tipLabel.text = self.currentTip.tip;
-            [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.currentTip Rating:@0];
+            
+            self.dataStore.currentUser = [LCLUser currentUser];
+            
+            BOOL tipNew = NO;
+            while (!tipNew) {
+                NSUInteger randomIndex = arc4random_uniform([tipQuery countObjects]);
+                self.dataStore.currentTip = results[randomIndex];
+                tipNew = [LCLRating checkIfUser:self.dataStore.currentUser HasSeenTip:self.dataStore.currentTip];
+                NSLog(@"Checking: %@", self.dataStore.currentTip.tipTitle);
+            }
+            
+            self.tipLabel.text = self.dataStore.currentTip.tip;
+            [LCLRating ratingWithUser:self.dataStore.currentUser Tip:self.dataStore.currentTip Rating:@0];
             [MBProgressHUD hideLoadingMessageForView:self.view];
         }
         if (error) {
@@ -69,18 +80,13 @@
 
 - (IBAction)likeButtonPressed:(UIButton *)sender
 {
-    
-    [LCLRating updateRating:@1 ForUser:[LCLUser currentUser] AndTip:self.currentTip];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self performSegueWithIdentifier:@"likeButtonSegue" sender:sender];
-    });
+    self.dataStore.currentRating = @1;
+    [self performSegueWithIdentifier:@"likeButtonSegue" sender:sender];
 }
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
-    [LCLRating updateRating:@-1 ForUser:[LCLUser currentUser] AndTip:self.currentTip];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self performSegueWithIdentifier:@"dislikeButtonSegue" sender:sender];
-    });
+    self.dataStore.currentRating = @-1;
+    [self performSegueWithIdentifier:@"dislikeButtonSegue" sender:sender];
 }
 
 @end

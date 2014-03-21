@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 
 @interface LCLTip : PFObject <PFSubclassing>
+
 + (NSString *)parseClassName;
 
 @property (strong, nonatomic) NSString *tip;

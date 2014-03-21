@@ -43,6 +43,7 @@
 
 #pragma mark - Helper Methods
 
+
 - (NSString *)shortenString:(NSString *)longString ToWords:(NSInteger)numberOfWords
 {
     NSArray *stringArray = [longString componentsSeparatedByString:@" "];
