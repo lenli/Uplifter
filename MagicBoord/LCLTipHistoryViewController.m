@@ -7,6 +7,7 @@
 //
 
 #import "LCLTipHistoryViewController.h"
+#import "LCLTipTableViewCell.h"
 
 @interface LCLTipHistoryViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -100,7 +101,7 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
 {
     
     static NSString *CellIdentifier = @"tipCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    LCLTipTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     LCLRating *currentRating = [self ratingsForUser][indexPath.row];
     LCLTip *currentTip = currentRating.tip;

@@ -30,6 +30,7 @@
 		876B521818DA8C5F0063C5E4 /* LCLRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B521718DA8C5F0063C5E4 /* LCLRating.m */; };
 		87AF7AF918DB7DA6001C6FCC /* MBProgressHUD+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */; };
 		87AF7AFC18DB8484001C6FCC /* LCLTipsDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7AFB18DB8484001C6FCC /* LCLTipsDataStore.m */; };
+		87AF7B1018E23C1A001C6FCC /* LCLTipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7B0F18E23C1A001C6FCC /* LCLTipTableViewCell.m */; };
 		B87F568143F046749F92D76E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7846964CD4E41E789ADA9C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Helpers.m"; sourceTree = "<group>"; };
 		87AF7AFA18DB8484001C6FCC /* LCLTipsDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipsDataStore.h; sourceTree = "<group>"; };
 		87AF7AFB18DB8484001C6FCC /* LCLTipsDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTipsDataStore.m; sourceTree = "<group>"; };
+		87AF7B0E18E23C1A001C6FCC /* LCLTipTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipTableViewCell.h; sourceTree = "<group>"; };
+		87AF7B0F18E23C1A001C6FCC /* LCLTipTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTipTableViewCell.m; sourceTree = "<group>"; };
 		A7846964CD4E41E789ADA9C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -198,6 +201,8 @@
 				876B521718DA8C5F0063C5E4 /* LCLRating.m */,
 				87AF7AFA18DB8484001C6FCC /* LCLTipsDataStore.h */,
 				87AF7AFB18DB8484001C6FCC /* LCLTipsDataStore.m */,
+				87AF7B0E18E23C1A001C6FCC /* LCLTipTableViewCell.h */,
+				87AF7B0F18E23C1A001C6FCC /* LCLTipTableViewCell.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				8700C76718D390020015B0DE /* LCLAppDelegate.m in Sources */,
 				8700C78A18D3A0DE0015B0DE /* LCLTip.m in Sources */,
 				8700C79B18D4C4E80015B0DE /* LCLUser.m in Sources */,
+				87AF7B1018E23C1A001C6FCC /* LCLTipTableViewCell.m in Sources */,
 				876B51AF18D654DE0063C5E4 /* LCLMainViewController.m in Sources */,
 				876B521818DA8C5F0063C5E4 /* LCLRating.m in Sources */,
 				87AF7AF918DB7DA6001C6FCC /* MBProgressHUD+Helpers.m in Sources */,
