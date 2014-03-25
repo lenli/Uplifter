@@ -9,6 +9,9 @@
 #import "LCLMainViewController.h"
 
 @interface LCLMainViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *redButton;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
 @end
 
@@ -26,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     // Do any additional setup after loading the view.
 }
 
@@ -49,7 +51,6 @@
             NSLog(@"Ratings not found for delete");
         }
         [MBProgressHUD hideLoadingMessageForView:self.view];
-        
     }];
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sG4-Ma-DAY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="EHn-Qs-UAB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -83,10 +83,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HFO-Xr-sPq"/>
+                    <connections>
+                        <outlet property="redButton" destination="U5Q-Yz-0QU" id="tFc-3x-fNM"/>
+                        <outlet property="resetButton" destination="RoL-av-Hbs" id="Xcy-nw-ZQ9"/>
+                        <outlet property="titleLabel" destination="Xr5-wR-YX9" id="qlM-V5-Rhe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF4-zi-uYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-336" y="170"/>
+            <point key="canvasLocation" x="190" y="170"/>
         </scene>
         <!--Tip View Controller-->
         <scene sceneID="6g3-X5-le7">
@@ -108,11 +113,11 @@
                                     <constraint firstAttribute="height" constant="320" id="yVQ-fq-14K"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="DLT-NO-Lzc">
-                                <rect key="frame" x="20" y="140" width="271" height="0.0"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="DLT-NO-Lzc">
+                                <rect key="frame" x="26" y="140" width="260" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="271" id="xWi-HT-1Y9"/>
+                                    <constraint firstAttribute="width" constant="260" id="xWi-HT-1Y9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="24"/>
                                 <nil key="highlightedColor"/>
@@ -186,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-RE-sk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="195" y="165"/>
+            <point key="canvasLocation" x="721" y="165"/>
         </scene>
         <!--Tip History View Controller-->
         <scene sceneID="Aov-ff-520">
@@ -242,7 +247,7 @@
                                         </state>
                                         <connections>
                                             <action selector="dislikeButtonPressed:" destination="h51-mT-z3V" eventType="touchUpInside" id="uXh-zj-7W8"/>
-                                            <segue destination="sG4-Ma-DAY" kind="modal" identifier="startoverSegue" id="Lvy-Py-paL"/>
+                                            <segue destination="EHn-Qs-UAB" kind="modal" identifier="startoverSegue" id="Lvy-Py-paL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -304,7 +309,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PZ-Du-QyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675" y="170"/>
+            <point key="canvasLocation" x="1201" y="170"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SKo-ry-dCA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="EHn-Qs-UAB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="84H-pc-E7G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sG4-Ma-DAY" kind="relationship" relationship="rootViewController" id="okI-WB-39y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8B-kC-w9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-336" y="170"/>
         </scene>
     </scenes>
     <resources>
