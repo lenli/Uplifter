@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LCLTipsDataStore.h"
 
 @interface LCLAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) LCLTipsDataStore *dataStore;
 @end

@@ -7,9 +7,6 @@
 //
 
 #import "LCLAppDelegate.h"
-#import "LCLTip.h"
-#import "LCLUser.h"
-#import "LCLRating.h"
 
 @implementation LCLAppDelegate
 
@@ -20,14 +17,20 @@
     [LCLUser registerSubclass];
     [LCLRating registerSubclass];
     
+    self.dataStore.currentUserTips = [NSMutableArray new];
+    self.dataStore.currentUserUnseenTips = [NSMutableArray new];
+    self.dataStore.tips = [NSMutableArray new];
+    self.dataStore.ratings = [NSMutableArray new];
+    
     [Parse setApplicationId:@"sQlOhsEuKc3PM0gZtoCNLPf6X4VVDdsVhqV1xKDU"
                   clientKey:@"o5xMW54dBllSp2nSuU1aPBKotx3q2hxvzqsFoBWd"];
     
-
     [LCLUser enableAutomaticUser];
-    [[LCLUser currentUser] incrementKey:@"RunCount"];
     [[LCLUser currentUser] saveInBackground];
     
+//    [[LCLUser currentUser] incrementKey:@"RunCount"];
+    
+//
 //    [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
 //        if (error) {
 //            NSLog(@"Anonymous login failed: %@", error);
@@ -61,35 +64,35 @@
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
     
-    [self createData];
+//    [self createData];
 
     return YES;
 }
 
--(void)createData
-{
-    PFQuery *tipQuery = [LCLTip query];
-    [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *tips, NSError *error) {
-        if ([tips count] > 0) {
-            NSLog(@"Tips Exist");
-        } else {
-            LCLTip *newTip1 = [LCLTip tipWithText:@"Call someone important to you and let you know how much you care about them. Don’t call collect if you can’t afford it." Category:@"Personal"];
-            LCLTip *newTip2 = [LCLTip tipWithText:@"Tell the person closest to you that their shoe is untied. When he or she looks down to check, giggle and shrug." Category:@"Personal"];
-            LCLTip *newTip3 = [LCLTip tipWithText:@"Go to the coffee shop for a cup of brew.  Then strike up conversation with someone new." Category:@"Personal"];
-            LCLTip *newTip4 = [LCLTip tipWithText:@"Do 20 push ups. Unless you are in a pool. Then just continue swimming." Category:@"Personal"];
-            LCLTip *newTip5 = [LCLTip tipWithText:@"Try parting your hair differently.  See if anyone notices." Category:@"Personal"];
-            LCLTip *newTip6 = [LCLTip tipWithText:@"Ahem. This is your mother. Go clean your room. Now." Category:@"Personal"];
-            LCLTip *newTip7 = [LCLTip tipWithText:@"Look around. Is anybody near you? If not, fart. If someone is, fart, and then apologize." Category:@"Personal"];
-            NSLog(@"New Tip Created: %@", newTip1.tipTitle);
-            NSLog(@"New Tip Created: %@", newTip2.tipTitle);
-            NSLog(@"New Tip Created: %@", newTip3.tipTitle);
-            NSLog(@"New Tip Created: %@", newTip4.tipTitle);
-            NSLog(@"New Tip Created: %@", newTip5.tipTitle);
-            NSLog(@"New Tip Created: %@", newTip6.tipTitle);
-            NSLog(@"New Tip Created: %@", newTip7.tipTitle);
-        }
-    }];
-}
+//-(void)createData
+//{
+//    PFQuery *tipQuery = [LCLTip query];
+//    [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *tips, NSError *error) {
+//        if ([tips count] > 0) {
+//            NSLog(@"Tips Exist");
+//        } else {
+//            LCLTip *newTip1 = [LCLTip tipWithText:@"Call someone important to you and let you know how much you care about them. Don’t call collect if you can’t afford it." Category:@"Personal"];
+//            LCLTip *newTip2 = [LCLTip tipWithText:@"Tell the person closest to you that their shoe is untied. When he or she looks down to check, giggle and shrug." Category:@"Personal"];
+//            LCLTip *newTip3 = [LCLTip tipWithText:@"Go to the coffee shop for a cup of brew.  Then strike up conversation with someone new." Category:@"Personal"];
+//            LCLTip *newTip4 = [LCLTip tipWithText:@"Do 20 push ups. Unless you are in a pool. Then just continue swimming." Category:@"Personal"];
+//            LCLTip *newTip5 = [LCLTip tipWithText:@"Try parting your hair differently.  See if anyone notices." Category:@"Personal"];
+//            LCLTip *newTip6 = [LCLTip tipWithText:@"Ahem. This is your mother. Go clean your room. Now." Category:@"Personal"];
+//            LCLTip *newTip7 = [LCLTip tipWithText:@"Look around. Is anybody near you? If not, fart. If someone is, fart, and then apologize." Category:@"Personal"];
+//            NSLog(@"New Tip Created: %@", newTip1.tipTitle);
+//            NSLog(@"New Tip Created: %@", newTip2.tipTitle);
+//            NSLog(@"New Tip Created: %@", newTip3.tipTitle);
+//            NSLog(@"New Tip Created: %@", newTip4.tipTitle);
+//            NSLog(@"New Tip Created: %@", newTip5.tipTitle);
+//            NSLog(@"New Tip Created: %@", newTip6.tipTitle);
+//            NSLog(@"New Tip Created: %@", newTip7.tipTitle);
+//        }
+//    }];
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

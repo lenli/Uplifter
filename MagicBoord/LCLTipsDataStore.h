@@ -14,9 +14,14 @@
 
 @interface LCLTipsDataStore : NSObject
 @property (strong, nonatomic) LCLTipsDataStore *dataStore;
-@property (strong, nonatomic) LCLUser *currentUser;
 @property (strong, nonatomic) LCLTip *currentTip;
 @property (strong, nonatomic) NSNumber *currentRating;
+
+@property (strong, nonatomic) NSMutableArray *tips;
+@property (strong, nonatomic) NSMutableArray *currentUserTips;
+@property (strong, nonatomic) NSMutableArray *currentUserUnseenTips;
+@property (strong, nonatomic) NSMutableArray *ratings;
+
 + (instancetype)sharedDataStore;
 
 @end

@@ -26,17 +26,21 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
     }
     return self;
 }
+- (IBAction)shareButtonPressed:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableview.delegate = self;
-    self.tableview.dataSource = self;
-    self.countdownLabel.text = @"";
+    [self setupTableView];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
+    self.standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    self.countdownLabel.text = @"";
     
     [MBProgressHUD showLoadingMessage:@"Loading" ForView:self.view];
-    [LCLRating updateRating:self.dataStore.currentRating ForUser:self.dataStore.currentUser AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
+    [LCLRating updateRating:self.dataStore.currentRating ForUser:[LCLUser currentUser] AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
         [self getTipsWithCompletion:^(NSArray *ratings) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
@@ -49,9 +53,17 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
     
 }
 
+#pragma mark - Setup Tableview
+- (void)setupTableView
+{
+    self.tableview.delegate = self;
+    self.tableview.dataSource = self;
+    self.tableview.separatorColor = [UIColor clearColor];
+}
+
 - (void)startCountdownSinceLastTipForDuration:(NSInteger)waitSeconds
 {
-    [LCLRating getTimeSinceLastTipForUser:self.dataStore.currentUser WithCompletion:^(NSNumber *seconds) {
+    [LCLRating getTimeSinceLastTipForUser:[LCLUser currentUser] WithCompletion:^(NSNumber *seconds) {
         MZTimerLabel *timer = [[MZTimerLabel alloc] initWithLabel:self.countdownLabel andTimerType:MZTimerLabelTypeTimer];
         timer.timeFormat = @"mm:ss";
         [timer setCountDownTime:waitSeconds-[seconds integerValue]];
