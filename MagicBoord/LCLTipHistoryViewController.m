@@ -28,7 +28,9 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
 }
 - (IBAction)shareButtonPressed:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSArray *array = [self.navigationController viewControllers];
+    NSLog(@"%@", array);
+    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
 }
 
 - (void)viewDidLoad

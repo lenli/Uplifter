@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="EHn-Qs-UAB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yNe-up-a8k">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -31,7 +31,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="h51-mT-z3V" kind="modal" id="yLB-NC-FWJ"/>
+                                            <segue destination="h51-mT-z3V" kind="push" id="Lvo-B7-XVL"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bored?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-wR-YX9">
@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF4-zi-uYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="190" y="170"/>
+            <point key="canvasLocation" x="716" y="170"/>
         </scene>
         <!--Tip View Controller-->
         <scene sceneID="6g3-X5-le7">
@@ -144,6 +144,7 @@
                                 </state>
                                 <connections>
                                     <action selector="dislikeButtonPressed:" destination="h51-mT-z3V" eventType="touchUpInside" id="FkA-Dh-LfM"/>
+                                    <segue destination="MQE-jJ-weB" kind="push" identifier="dislikeButtonSegue" id="HhG-EV-zM3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKE-Bc-Ypl">
@@ -161,6 +162,7 @@
                                 </state>
                                 <connections>
                                     <action selector="likeButtonPressed:" destination="h51-mT-z3V" eventType="touchUpInside" id="hKP-d7-G8z"/>
+                                    <segue destination="MQE-jJ-weB" kind="push" identifier="likeButtonSegue" id="8qj-1S-Gaf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -185,13 +187,11 @@
                         <outlet property="dislikeButton" destination="7C4-tD-mtq" id="7Ob-cg-sg9"/>
                         <outlet property="likeButton" destination="wKE-Bc-Ypl" id="b0C-Tc-xbc"/>
                         <outlet property="tipLabel" destination="DLT-NO-Lzc" id="KIM-Oq-IoR"/>
-                        <segue destination="MQE-jJ-weB" kind="modal" identifier="likeButtonSegue" id="CXL-ZJ-Iey"/>
-                        <segue destination="MQE-jJ-weB" kind="modal" identifier="dislikeButtonSegue" id="Rsf-Xj-X9H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-RE-sk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="721" y="165"/>
+            <point key="canvasLocation" x="1247" y="165"/>
         </scene>
         <!--Tip History View Controller-->
         <scene sceneID="Aov-ff-520">
@@ -248,7 +248,6 @@
                                         <connections>
                                             <action selector="dislikeButtonPressed:" destination="h51-mT-z3V" eventType="touchUpInside" id="uXh-zj-7W8"/>
                                             <action selector="shareButtonPressed:" destination="MQE-jJ-weB" eventType="touchUpInside" id="O8y-WO-TYI"/>
-                                            <segue destination="sG4-Ma-DAY" kind="modal" id="N2W-9z-TSt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -294,6 +293,7 @@
                             <constraint firstItem="2JN-sV-Cxw" firstAttribute="top" secondItem="HBn-Y1-5Wo" secondAttribute="bottom" id="ehl-K8-G52"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="d6K-xb-XMp"/>
                     <connections>
                         <outlet property="countdownLabel" destination="Oki-yP-tr0" id="PJj-zE-2qi"/>
                         <outlet property="tableview" destination="ISy-WG-EI5" id="Kdb-t7-jQr"/>
@@ -301,25 +301,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PZ-Du-QyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="170"/>
+            <point key="canvasLocation" x="1741" y="170"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="SKo-ry-dCA">
+        <scene sceneID="Oxs-X4-iZs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="EHn-Qs-UAB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="yNe-up-a8k" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="84H-pc-E7G">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6nj-7Y-oAe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="sG4-Ma-DAY" kind="relationship" relationship="rootViewController" id="okI-WB-39y"/>
+                        <segue destination="sG4-Ma-DAY" kind="relationship" relationship="rootViewController" id="yCF-vS-zge"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T8B-kC-w9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M85-Tp-A3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-336" y="170"/>
+            <point key="canvasLocation" x="190" y="170"/>
         </scene>
     </scenes>
     <resources>
@@ -332,7 +332,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="N2W-9z-TSt"/>
-        <segue reference="Rsf-Xj-X9H"/>
+        <segue reference="HhG-EV-zM3"/>
     </inferredMetricsTieBreakers>
 </document>

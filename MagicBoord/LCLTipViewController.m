@@ -120,8 +120,8 @@
                           @"Deciding your fate",
                           @"Rolling the dice",
                           @"Attention on deck",
-                          @"All your boredom are belong to us",
-                          @"Calculating the meaning of life",
+                          @"All boredom are belong to us",
+                          @"Finding the meaning of life",
                           @"Curing cancer",
                           @"Witty wait message here",
                           @"Using the force",
@@ -166,12 +166,10 @@
 - (IBAction)likeButtonPressed:(UIButton *)sender
 {
     self.dataStore.currentRating = @1;
-    [self performSegueWithIdentifier:@"likeButtonSegue" sender:sender];
 }
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
     self.dataStore.currentRating = @-1;
-    [self performSegueWithIdentifier:@"dislikeButtonSegue" sender:sender];
 }
 
 @end
