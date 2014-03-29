@@ -41,7 +41,7 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
     self.standardUserDefaults = [NSUserDefaults standardUserDefaults];
     self.countdownLabel.text = @"";
     
-    [MBProgressHUD showLoadingMessage:@"Loading" ForView:self.view];
+    [self randomizeWaitMessageText];
     [LCLRating updateRating:self.dataStore.currentRating ForUser:[LCLUser currentUser] AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
         [self getTipsWithCompletion:^(NSArray *ratings) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -138,6 +138,20 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableview reloadData];
     return nil;
+}
+
+#pragma mark - Helper Methods
+- (void) randomizeWaitMessageText
+{
+    NSArray *messages = @[@"Attention on deck",
+                          @"Seeking the meaning of life",
+                          @"Curing cancer",
+                          @"Witty loading message here",
+                          @"Using the force",
+                          @"Setting thrusters to full"
+                          ];
+    NSUInteger randomMessageIndex = arc4random_uniform([messages count]);
+    [MBProgressHUD showLoadingMessage:messages[randomMessageIndex] ForView:self.view];
 }
 
 

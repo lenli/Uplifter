@@ -119,16 +119,11 @@
 {
     NSArray *messages = @[@"Determining your fate",
                           @"Rolling the dice",
-                          @"Attention on deck",
                           @"All boredom are belong to us",
-                          @"Seeking the meaning of life",
-                          @"Curing cancer",
-                          @"Witty loading message here",
-                          @"Using the force",
                           @"Searching your feelings",
                           @"Reading your mind",
                           @"Prepare to be amused",
-                          @"Setting thrusters to full"
+                          @"Creative juices flowing"
                           ];
     NSUInteger randomMessageIndex = arc4random_uniform([messages count]);
     self.likeButton.hidden = YES;
@@ -145,9 +140,9 @@
                               @"#Fail",
                               @"Try again",
                               @"No soup for you",
-                              @"It was funny... not",
                               @"Alrighty then",
-                              @"Weaksauce"
+                              @"Weaksauce",
+                              @"Lame"
                               ];
     NSArray *likeText =  @[@"You so funny",
                            @"Ha ha nice one",
@@ -155,10 +150,10 @@
                            @"Me likey",
                            @"#Awesome",
                            @"Great shot kid",
-                           @"Live long and prosper",
                            @"Beam me up",
+                           @"Badass",
                            @"Yummy!",
-                           @"Badass"
+                           @"That’s hot"
                            ];
     
     NSUInteger randomLikeIndex = arc4random_uniform([likeText count]);
