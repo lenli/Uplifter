@@ -110,26 +110,29 @@
     [self.dataStore.currentUserUnseenTips removeObject:self.dataStore.currentTip];
     NSLog(@"Unseen: %@", self.dataStore.currentUserUnseenTips);
     
-    
+    self.likeButton.hidden = NO;
+    self.dislikeButton.hidden = NO;
     [MBProgressHUD hideLoadingMessageForView:self.view];
 }
 
 - (void)randomizeWaitMessageText
 {
-    NSArray *messages = @[@"Randomizing",
-                          @"Deciding your fate",
+    NSArray *messages = @[@"Determining your fate",
                           @"Rolling the dice",
                           @"Attention on deck",
                           @"All boredom are belong to us",
-                          @"Finding the meaning of life",
+                          @"Seeking the meaning of life",
                           @"Curing cancer",
-                          @"Witty wait message here",
+                          @"Witty loading message here",
                           @"Using the force",
                           @"Searching your feelings",
-                          @"Be afraid - Be very afraid",
+                          @"Reading your mind",
+                          @"Prepare to be amused",
                           @"Setting thrusters to full"
                           ];
     NSUInteger randomMessageIndex = arc4random_uniform([messages count]);
+    self.likeButton.hidden = YES;
+    self.dislikeButton.hidden = YES;
     [MBProgressHUD showLoadingMessage:messages[randomMessageIndex] ForView:self.view];
 }
 
@@ -143,7 +146,8 @@
                               @"Try again",
                               @"No soup for you",
                               @"It was funny... not",
-                              @"Alrighty then"
+                              @"Alrighty then",
+                              @"Weaksauce"
                               ];
     NSArray *likeText =  @[@"You so funny",
                            @"Ha ha nice one",
@@ -153,7 +157,8 @@
                            @"Great shot kid",
                            @"Live long and prosper",
                            @"Beam me up",
-                           @"Yummy!"
+                           @"Yummy!",
+                           @"Badass"
                            ];
     
     NSUInteger randomLikeIndex = arc4random_uniform([likeText count]);

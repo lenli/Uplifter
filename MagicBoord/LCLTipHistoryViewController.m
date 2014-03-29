@@ -125,9 +125,9 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
     cell.textLabel.textColor = [UIColor whiteColor];
     
     if ([currentRating.rating integerValue] == 1) {
-        [cell setBackgroundColor:[UIColor colorWithRed:(39/255.0) green:(174/255.0) blue:(96/255) alpha:1]];
+        [cell setBackgroundColor:[UIColor colorWithRed:(39/255.0) green:(174/255.0) blue:(96/255) alpha:0.25]];
     } else if ([currentRating.rating integerValue] == -1) {
-        [cell setBackgroundColor:[UIColor colorWithRed:(230/255.0) green:(196/255.0) blue:(15/255) alpha:1]];
+        [cell setBackgroundColor:[UIColor colorWithRed:(230/255.0) green:(196/255.0) blue:(15/255) alpha:0.25]];
     } else {
         [cell setBackgroundColor:[UIColor lightGrayColor]];
     }
