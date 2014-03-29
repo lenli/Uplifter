@@ -140,9 +140,9 @@
                               @"No good",
                               @"Me no likey",
                               @"#Fail",
-                              @"That is why you fail",
-                              @"Assimilate this",
-                              @"It was... fun...",
+                              @"Try again",
+                              @"No soup for you",
+                              @"It was funny... not",
                               @"Alrighty then"
                               ];
     NSArray *likeText =  @[@"You so funny",
