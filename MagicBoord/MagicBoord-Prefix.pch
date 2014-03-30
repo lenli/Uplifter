@@ -17,6 +17,6 @@
     #import "MBProgressHUD+Helpers.h"
     #import "MZTimerLabel.h"
     #import <FBShimmeringView.h>
-#import <FBShimmeringLayer.h>
-
+    #import <FBShimmeringLayer.h>
+    #import "FontAwesomeKit/FontAwesomeKit.h"
 #endif

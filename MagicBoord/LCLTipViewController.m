@@ -157,8 +157,10 @@
                            ];
     
     NSUInteger randomLikeIndex = arc4random_uniform([likeText count]);
-    [self.likeButton setTitle:likeText[randomLikeIndex] forState: UIControlStateNormal];
-    [self.dislikeButton setTitle:dislikeText[randomLikeIndex] forState: UIControlStateNormal];
+    NSString *likeString = [NSString stringWithFormat:@"%@ %@", likeText[randomLikeIndex], @"\u2713"];
+    [self.likeButton setTitle:likeString forState: UIControlStateNormal];
+    NSString *dislikeString = [NSString stringWithFormat:@"%@ %@", dislikeText[randomLikeIndex], @"\u2715"];
+    [self.dislikeButton setTitle:dislikeString forState: UIControlStateNormal];
 }
 
 #pragma mark - IBActions Methods
