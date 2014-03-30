@@ -12,7 +12,6 @@
 @interface LCLTipHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSArray *ratingsForUser;
 @property (strong, nonatomic) LCLTipsDataStore *dataStore;
-@property (strong, nonatomic) NSUserDefaults *standardUserDefaults;
 
 extern NSInteger const TIMER_WAIT_TIME_SECONDS;
 

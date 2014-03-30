@@ -41,7 +41,6 @@
     [super viewDidLoad];
     [self setupTableView];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
-    self.standardUserDefaults = [NSUserDefaults standardUserDefaults];
     self.countdownLabel.text = @"";
     
     [MBProgressHUD showRandomMessage:@"waiting" ForView:self.view];

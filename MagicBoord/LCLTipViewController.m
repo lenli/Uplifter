@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
-    
+
     [MBProgressHUD showRandomMessage:@"randomizing" ForView:self.view];
     [self randomizeLikeButtonText];
     [self getRandomTip];
@@ -151,10 +151,12 @@
 
 - (IBAction)likeButtonPressed:(UIButton *)sender
 {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     self.dataStore.currentRating = @1;
 }
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     self.dataStore.currentRating = @-1;
 }
 
