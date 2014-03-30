@@ -29,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.dataStore = [LCLTipsDataStore sharedDataStore];
+
     // Do any additional setup after loading the view.
 }
 
@@ -38,9 +40,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBActions
+
 - (IBAction)resetButtonPressed:(UIButton *)sender
 {
     [MBProgressHUD showLoadingMessage:@"Resetting Tips" ForView:self.view];
+    
+    // Delete last tip date
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"tipLastReceivedDate"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // Delete ratings for user
     PFQuery *ratingQuery = [PFQuery queryWithClassName:@"LCLRating"];
     [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
     [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
@@ -53,6 +63,29 @@
         }
         [MBProgressHUD hideLoadingMessageForView:self.view];
     }];
+    
 }
+
+- (IBAction)mainButtonPressed:(UIButton *)sender
+{
+    NSTimeInterval secondsSinceLastTip = 0;
+    NSDate *lastTipDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"tipLastReceivedDate"];
+    if (lastTipDate) secondsSinceLastTip = [[NSDate date] timeIntervalSinceDate:lastTipDate];
+    
+    [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+    
+//    
+//    if (secondsSinceLastTip >= TIMER_WAIT_TIME_SECONDS || secondsSinceLastTip == 0) {
+//        [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+//    } else {
+//        [self performSegueWithIdentifier:@"mainToTipHistorySegue" sender:sender];
+//    }
+}
+
+#pragma mark - Helper Methods
+
+
+
+
 
 @end
