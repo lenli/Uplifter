@@ -13,10 +13,11 @@
 #import "MBProgressHUD+Helpers.h"
 
 @interface LCLTipsDataStore : NSObject
+extern NSInteger const TIMER_WAIT_TIME_SECONDS;
+
 @property (strong, nonatomic) LCLTipsDataStore *dataStore;
 @property (strong, nonatomic) LCLTip *currentTip;
 @property (strong, nonatomic) NSNumber *currentRating;
-
 @property (strong, nonatomic) NSMutableArray *tips;
 @property (strong, nonatomic) NSMutableArray *currentUserTips;
 @property (strong, nonatomic) NSMutableArray *currentUserUnseenTips;

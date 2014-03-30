@@ -31,7 +31,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="h51-mT-z3V" kind="push" id="Lvo-B7-XVL"/>
+                                            <action selector="mainButtonPressed:" destination="sG4-Ma-DAY" eventType="touchUpInside" id="P5H-5a-3rm"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bored?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-wR-YX9">
@@ -87,6 +87,8 @@
                         <outlet property="redButton" destination="U5Q-Yz-0QU" id="tFc-3x-fNM"/>
                         <outlet property="resetButton" destination="RoL-av-Hbs" id="Xcy-nw-ZQ9"/>
                         <outlet property="titleLabel" destination="Xr5-wR-YX9" id="qlM-V5-Rhe"/>
+                        <segue destination="h51-mT-z3V" kind="push" identifier="mainToTipSegue" id="Vdk-kR-GLl"/>
+                        <segue destination="MQE-jJ-weB" kind="push" identifier="mainToTipHistorySegue" id="4Us-yW-KwL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF4-zi-uYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -191,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-RE-sk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1247" y="165"/>
+            <point key="canvasLocation" x="1258" y="90"/>
         </scene>
         <!--Tip History View Controller-->
         <scene sceneID="Aov-ff-520">
@@ -310,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PZ-Du-QyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1741" y="170"/>
+            <point key="canvasLocation" x="1693" y="645"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oxs-X4-iZs">
@@ -341,6 +343,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HhG-EV-zM3"/>
+        <segue reference="4Us-yW-KwL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,8 @@
 #import "LCLTipsDataStore.h"
 
 @implementation LCLTipsDataStore
+NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
+
 + (instancetype)sharedDataStore {
     static LCLTipsDataStore *_sharedDataStore = nil;
     static dispatch_once_t onceToken;
@@ -18,5 +20,6 @@
     
     return _sharedDataStore;
 }
+
 
 @end

@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
     
-    [self randomizeWaitMessageText];
+    [MBProgressHUD showRandomMessage:@"randomizing" ForView:self.view];
     [self randomizeLikeButtonText];
     [self getRandomTip];
 
@@ -52,6 +52,7 @@
 
 - (void)fetchTipsAndRatingsAndSelectRandomTip
 {
+    // Fetch tips into datastore tips
     PFQuery *tipQuery = [PFQuery queryWithClassName:@"LCLTip"];
     [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
         if (results) {
@@ -66,6 +67,7 @@
 
 - (void)fetchRatings
 {
+    // Fetch ratings and determine user's seen tips into datastore currentTips
     PFQuery *ratingQuery = [LCLRating query];
     [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
     [ratingQuery orderByDescending:@"createdAt"];
@@ -77,11 +79,7 @@
                 [currentTips addObject:rating.tip];
                 self.dataStore.currentUserTips = currentTips;
                 [LCLTip fetchAllIfNeeded:currentTips];
-                
-                NSLog(@"Current Tips: %@", currentTips);
             }
-            NSLog(@"CurrentUserTips: %@", self.dataStore.currentUserTips);
-            NSLog(@"Rating: %@", ratings);
             [self selectRandomTip];
         } else {
             NSLog(@"Ratings Not Found for User");
@@ -91,19 +89,18 @@
 
 - (void)selectRandomTip
 {
-    NSUInteger randomIndex = arc4random_uniform([self.dataStore.tips count]);
+    // Find unseen tips
     self.dataStore.currentUserUnseenTips = self.dataStore.tips;
-    for (LCLTip *tip in self.dataStore.currentUserTips) {
-        NSMutableArray *currentUnseen = [NSMutableArray new];
-        [self.dataStore.currentUserUnseenTips removeObject:tip];
-        NSLog(@"Removing tip: %@", tip.tipTitle);
-    }
+    [self.dataStore.currentUserUnseenTips removeObjectsInArray:self.dataStore.currentUserTips];
     
+    NSUInteger randomIndex = arc4random_uniform([self.dataStore.currentUserUnseenTips count]);
     self.dataStore.currentTip = self.dataStore.currentUserUnseenTips[randomIndex];
     self.tipLabel.text = self.dataStore.currentTip.tip;
+    [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.dataStore.currentTip Rating:@0];
     NSLog(@"Selecting tip: %@", self.dataStore.currentTip.tipTitle);
     
-    [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.dataStore.currentTip Rating:@0];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"tipLastReceivedDate"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self.dataStore.currentUserTips addObject:self.dataStore.currentTip];
     NSLog(@"Current Tips: %@", self.dataStore.currentUserTips);
@@ -115,35 +112,8 @@
     [MBProgressHUD hideLoadingMessageForView:self.view];
 }
 
-- (void)randomizeWaitMessageText
-{
-    NSArray *messages = @[@"Determining your fate",
-                          @"Rolling the dice",
-                          @"All boredom are belong to us",
-                          @"Searching your feelings",
-                          @"Reading your mind",
-                          @"Prepare to be amused",
-                          @"Creative juices flowing"
-                          ];
-    NSUInteger randomMessageIndex = arc4random_uniform([messages count]);
-    self.likeButton.hidden = YES;
-    self.dislikeButton.hidden = YES;
-    [MBProgressHUD showLoadingMessage:messages[randomMessageIndex] ForView:self.view];
-}
-
 - (void)randomizeLikeButtonText
 {
-    NSArray *dislikeText =  @[@"Could be better",
-                              @"Eek <Crickets>",
-                              @"No good",
-                              @"Me no likey",
-                              @"#Fail",
-                              @"Try again",
-                              @"No soup for you",
-                              @"Alrighty then",
-                              @"Weaksauce",
-                              @"Lame"
-                              ];
     NSArray *likeText =  @[@"You so funny",
                            @"Ha ha nice one",
                            @"Not bad",
@@ -157,8 +127,22 @@
                            ];
     
     NSUInteger randomLikeIndex = arc4random_uniform([likeText count]);
+
     NSString *likeString = [NSString stringWithFormat:@"%@ %@", likeText[randomLikeIndex], @"\u2713"];
     [self.likeButton setTitle:likeString forState: UIControlStateNormal];
+    
+    NSArray *dislikeText =  @[@"Could be better",
+                              @"Eek <Crickets>",
+                              @"No good",
+                              @"Me no likey",
+                              @"#Fail",
+                              @"Try again",
+                              @"No soup for you",
+                              @"Alrighty then",
+                              @"Weaksauce",
+                              @"Lame"
+                              ];
+    
     NSString *dislikeString = [NSString stringWithFormat:@"%@ %@", dislikeText[randomLikeIndex], @"\u2715"];
     [self.dislikeButton setTitle:dislikeString forState: UIControlStateNormal];
 }

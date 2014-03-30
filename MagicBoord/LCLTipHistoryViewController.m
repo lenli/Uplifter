@@ -16,7 +16,6 @@
 @end
 
 @implementation LCLTipHistoryViewController
-NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +31,7 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
 //    NSLog(@"%@", array);
 //    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
     
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"Check out this cool Uplifter app:  http://lenli.com", nil] applicationActivities:nil];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"Check out this cool app called Uplifter:  http://lenli.com", nil] applicationActivities:nil];
     activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
     [self presentViewController:activityVC animated:YES completion:nil];
 }
@@ -45,8 +44,19 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
     self.standardUserDefaults = [NSUserDefaults standardUserDefaults];
     self.countdownLabel.text = @"";
     
-    [self randomizeWaitMessageText];
-    [LCLRating updateRating:self.dataStore.currentRating ForUser:[LCLUser currentUser] AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
+    [MBProgressHUD showRandomMessage:@"waiting" ForView:self.view];
+    if (self.dataStore.currentTip) {
+        [LCLRating updateRating:self.dataStore.currentRating ForUser:[LCLUser currentUser] AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
+            [self getTipsWithCompletion:^(NSArray *ratings) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
+                    self.ratingsForUser = ratings;
+                    [self.tableview reloadData];
+                    [MBProgressHUD hideLoadingMessageForView:self.view];
+                });
+            }];
+        }];
+    } else {
         [self getTipsWithCompletion:^(NSArray *ratings) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
@@ -55,7 +65,8 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
                 [MBProgressHUD hideLoadingMessageForView:self.view];
             });
         }];
-    } ];
+    }
+
     
 }
 
@@ -69,12 +80,14 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
 
 - (void)startCountdownSinceLastTipForDuration:(NSInteger)waitSeconds
 {
-    [LCLRating getTimeSinceLastTipForUser:[LCLUser currentUser] WithCompletion:^(NSNumber *seconds) {
-        MZTimerLabel *timer = [[MZTimerLabel alloc] initWithLabel:self.countdownLabel andTimerType:MZTimerLabelTypeTimer];
-        timer.timeFormat = @"mm:ss";
-        [timer setCountDownTime:waitSeconds-[seconds integerValue]];
-        [timer start];
-    }];
+    NSTimeInterval secondsSinceLastTip = 0;
+    NSDate *lastTipDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"tipLastReceivedDate"];
+    if (lastTipDate) secondsSinceLastTip = [[NSDate date] timeIntervalSinceDate:lastTipDate];
+    
+    MZTimerLabel *timer = [[MZTimerLabel alloc] initWithLabel:self.countdownLabel andTimerType:MZTimerLabelTypeTimer];
+    timer.timeFormat = @"mm:ss";
+    [timer setCountDownTime:waitSeconds-secondsSinceLastTip];
+    [timer start];
 }
 
 - (void)getTipsWithCompletion:(void (^)(NSArray *))completionBlock
@@ -145,18 +158,7 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
 }
 
 #pragma mark - Helper Methods
-- (void) randomizeWaitMessageText
-{
-    NSArray *messages = @[@"Attention on deck",
-                          @"Seeking the meaning of life",
-                          @"Curing cancer",
-                          @"Witty loading message here",
-                          @"Using the force",
-                          @"Setting thrusters to full"
-                          ];
-    NSUInteger randomMessageIndex = arc4random_uniform([messages count]);
-    [MBProgressHUD showLoadingMessage:messages[randomMessageIndex] ForView:self.view];
-}
+
 
 
 @end
