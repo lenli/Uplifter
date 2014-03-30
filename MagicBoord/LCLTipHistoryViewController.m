@@ -28,9 +28,13 @@ NSInteger const TIMER_WAIT_TIME_SECONDS = 1200;
 }
 - (IBAction)shareButtonPressed:(UIButton *)sender
 {
-    NSArray *array = [self.navigationController viewControllers];
-    NSLog(@"%@", array);
-    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+//    NSArray *array = [self.navigationController viewControllers];
+//    NSLog(@"%@", array);
+//    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"Check out this cool Uplifter app:  http://lenli.com", nil] applicationActivities:nil];
+    activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 - (void)viewDidLoad
