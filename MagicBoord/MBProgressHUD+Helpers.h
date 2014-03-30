@@ -11,5 +11,6 @@
 @interface MBProgressHUD (Helpers)
 + (void)showLoadingMessage:(NSString *)messageString ForView:(UIView *)view;
 + (void)hideLoadingMessageForView:(UIView *)view;
++ (void)showRandomMessage:(NSString *)messageType ForView:(UIView *)view;
 
 @end
