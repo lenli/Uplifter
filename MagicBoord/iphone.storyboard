@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CheckerBoard.png" translatesAutoresizingMaskIntoConstraints="NO" id="md6-2V-tDC">
-                                <rect key="frame" x="0.0" y="84" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="9eF-YS-ILh"/>
@@ -116,7 +116,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="DLT-NO-Lzc">
-                                <rect key="frame" x="30" y="112" width="260" height="0.0"/>
+                                <rect key="frame" x="30" y="92" width="260" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="xWi-HT-1Y9"/>
@@ -166,7 +166,7 @@
                             <constraint firstAttribute="centerX" secondItem="md6-2V-tDC" secondAttribute="centerX" id="7uB-5T-2kw"/>
                             <constraint firstItem="wKE-Bc-Ypl" firstAttribute="trailing" secondItem="7C4-tD-mtq" secondAttribute="trailing" id="Ja7-bd-b49"/>
                             <constraint firstItem="Bsq-8J-TdH" firstAttribute="top" secondItem="wKE-Bc-Ypl" secondAttribute="bottom" constant="32" id="NV5-F8-Ng4"/>
-                            <constraint firstItem="md6-2V-tDC" firstAttribute="top" secondItem="RBY-xI-yeP" secondAttribute="bottom" constant="20" id="PJX-Gs-cuh"/>
+                            <constraint firstItem="md6-2V-tDC" firstAttribute="top" secondItem="RBY-xI-yeP" secondAttribute="bottom" id="PJX-Gs-cuh"/>
                             <constraint firstItem="7C4-tD-mtq" firstAttribute="leading" secondItem="wKE-Bc-Ypl" secondAttribute="leading" id="Q1n-tW-Me9"/>
                             <constraint firstAttribute="centerX" secondItem="wKE-Bc-Ypl" secondAttribute="centerX" id="ZQr-E5-0Vl"/>
                             <constraint firstAttribute="centerX" secondItem="DLT-NO-Lzc" secondAttribute="centerX" id="a3q-l1-gzW"/>
@@ -199,13 +199,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2JN-sV-Cxw">
-                                <rect key="frame" x="0.0" y="64" width="320" height="280"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="255"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oki-yP-tr0">
-                                        <rect key="frame" x="100" y="84" width="120" height="58"/>
+                                        <rect key="frame" x="100" y="79" width="120" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="XJ6-w6-FVf"/>
                                             <constraint firstAttribute="height" constant="58" id="weI-YS-Zdo"/>
@@ -220,13 +219,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like This? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-k3-0ng">
-                                        <rect key="frame" x="121" y="162" width="79" height="20"/>
+                                        <rect key="frame" x="121" y="147" width="79" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-de-7yr">
-                                        <rect key="frame" x="50" y="190" width="220" height="45"/>
+                                        <rect key="frame" x="50" y="175" width="220" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -246,20 +245,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="XDa-k3-0ng" firstAttribute="top" secondItem="Oki-yP-tr0" secondAttribute="bottom" constant="20" id="2Qu-HR-0Ho"/>
+                                    <constraint firstItem="XDa-k3-0ng" firstAttribute="top" secondItem="Oki-yP-tr0" secondAttribute="bottom" constant="10" id="2Qu-HR-0Ho"/>
                                     <constraint firstItem="5f7-EZ-FDm" firstAttribute="top" secondItem="2JN-sV-Cxw" secondAttribute="top" constant="30" id="IRR-WK-qy1"/>
                                     <constraint firstItem="ygs-de-7yr" firstAttribute="top" secondItem="XDa-k3-0ng" secondAttribute="bottom" constant="8" id="Klv-cd-Ox8"/>
-                                    <constraint firstItem="Oki-yP-tr0" firstAttribute="top" secondItem="5f7-EZ-FDm" secondAttribute="bottom" constant="10" id="Ott-YH-aGe"/>
+                                    <constraint firstItem="Oki-yP-tr0" firstAttribute="top" secondItem="5f7-EZ-FDm" secondAttribute="bottom" constant="5" id="Ott-YH-aGe"/>
                                     <constraint firstAttribute="centerX" secondItem="5f7-EZ-FDm" secondAttribute="centerX" id="QvB-0H-eeS"/>
                                     <constraint firstAttribute="centerX" secondItem="Oki-yP-tr0" secondAttribute="centerX" id="SWC-Iu-HOD"/>
                                     <constraint firstAttribute="width" constant="320" id="X2q-YK-FJW"/>
-                                    <constraint firstAttribute="height" constant="280" id="kPY-yV-a71"/>
+                                    <constraint firstAttribute="height" constant="255" id="kPY-yV-a71"/>
                                     <constraint firstAttribute="centerX" secondItem="ygs-de-7yr" secondAttribute="centerX" id="m3F-pm-jtU"/>
                                     <constraint firstAttribute="centerX" secondItem="XDa-k3-0ng" secondAttribute="centerX" id="tgt-gG-O0A"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ISy-WG-EI5">
-                                <rect key="frame" x="0.0" y="344" width="320" height="136"/>
+                                <rect key="frame" x="0.0" y="319" width="320" height="161"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -289,6 +288,7 @@
                     <navigationItem key="navigationItem" title="Uplifter" id="d6K-xb-XMp"/>
                     <connections>
                         <outlet property="countdownLabel" destination="Oki-yP-tr0" id="PJj-zE-2qi"/>
+                        <outlet property="messageView" destination="2JN-sV-Cxw" id="WH7-Ta-fyc"/>
                         <outlet property="tableview" destination="ISy-WG-EI5" id="Kdb-t7-jQr"/>
                     </connections>
                 </viewController>
@@ -320,7 +320,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CheckerBoard.png" width="240" height="240"/>
+        <image name="CheckerBoard.png" width="320" height="320"/>
         <image name="redbutton.png" width="320" height="320"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -329,6 +329,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4Us-yW-KwL"/>
+        <segue reference="HhG-EV-zM3"/>
     </inferredMetricsTieBreakers>
 </document>

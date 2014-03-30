@@ -19,5 +19,7 @@
 @property (strong, nonatomic) NSString *category;
 
 + (instancetype)tipWithText:(NSString *)tip Category:(NSString *)category;
++ (instancetype)defaultTipWithText:(NSString *)tip;
 - (instancetype)initWithClassName:(NSString *)newClassName WithTip:(NSString *)tip WithCategory:(NSString *)category;
+- (instancetype)initNoSaveWithClassName:(NSString *)newClassName WithTip:(NSString *)tip;
 @end

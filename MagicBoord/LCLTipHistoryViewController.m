@@ -12,6 +12,7 @@
 @interface LCLTipHistoryViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
+@property (weak, nonatomic) IBOutlet UIView *messageView;
 
 @end
 
@@ -25,56 +26,68 @@
     }
     return self;
 }
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setupMessageView];
+    [self setupTableView];
+    self.dataStore = [LCLTipsDataStore sharedDataStore];
+
+    
+    [MBProgressHUD showRandomMessage:@"waiting" ForView:self.view];
+    if (self.dataStore.currentTip) {
+        [LCLRating updateRating:self.dataStore.currentRating ForUser:[LCLUser currentUser] AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
+            [self getTipsForUser];
+        }];
+    } else {
+        [self getTipsForUser];
+    }
+
+    
+}
+
+#pragma mark - IBActions
+
 - (IBAction)shareButtonPressed:(UIButton *)sender
 {
-//    NSArray *array = [self.navigationController viewControllers];
-//    NSLog(@"%@", array);
-//    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+    //    NSArray *array = [self.navigationController viewControllers];
+    //    NSLog(@"%@", array);
+    //    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
     
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"Check out this cool app called Uplifter:  http://lenli.com", nil] applicationActivities:nil];
     activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
     [self presentViewController:activityVC animated:YES completion:nil];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self setupTableView];
-    self.dataStore = [LCLTipsDataStore sharedDataStore];
-    self.countdownLabel.text = @"";
-    
-    [MBProgressHUD showRandomMessage:@"waiting" ForView:self.view];
-    if (self.dataStore.currentTip) {
-        [LCLRating updateRating:self.dataStore.currentRating ForUser:[LCLUser currentUser] AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
-            [self getTipsWithCompletion:^(NSArray *ratings) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
-                    self.ratingsForUser = ratings;
-                    [self.tableview reloadData];
-                    [MBProgressHUD hideLoadingMessageForView:self.view];
-                });
-            }];
-        }];
-    } else {
-        [self getTipsWithCompletion:^(NSArray *ratings) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
-                self.ratingsForUser = ratings;
-                [self.tableview reloadData];
-                [MBProgressHUD hideLoadingMessageForView:self.view];
-            });
-        }];
-    }
-
-    
-}
-
 #pragma mark - Setup Tableview
+
+- (void)setupMessageView
+{
+    UIGraphicsBeginImageContext(self.messageView.frame.size);
+    [[UIImage imageNamed:@"CheckerBoard.png"] drawAsPatternInRect:self.messageView.bounds];
+    UIImage *checkerBG = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.messageView.backgroundColor = [UIColor colorWithPatternImage:checkerBG];
+    self.countdownLabel.text = @"";
+}
 - (void)setupTableView
 {
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     self.tableview.separatorColor = [UIColor clearColor];
+}
+
+- (void)getTipsForUser
+{
+    [self getTipsWithCompletion:^(NSArray *ratings) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
+            self.ratingsForUser = ratings;
+            [self.tableview reloadData];
+            [MBProgressHUD hideLoadingMessageForView:self.view];
+        });
+    }];
 }
 
 - (void)startCountdownSinceLastTipForDuration:(NSInteger)waitSeconds

@@ -31,7 +31,7 @@
         self.user = user;
         self.tip = tip;
         self.rating = rating;
-        [self saveInBackground];
+        [self save];
     }
     return self;
 };
@@ -44,7 +44,7 @@
     [ratingQuery getFirstObjectInBackgroundWithBlock:^(PFObject *ratingObject, NSError *error) {
         if (!error) {
             [ratingObject setObject:ratingNumber forKey:@"rating"];
-            [ratingObject saveInBackground];
+            [ratingObject save];
             completionBlock(YES);
         } else {
             NSLog(@"Could not find Rating For User %@ and Tip %@", user, tip);

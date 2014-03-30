@@ -27,6 +27,11 @@
     return [[self alloc] initWithClassName:[LCLTip parseClassName] WithTip:tip WithCategory:category];
 }
 
++ (instancetype)defaultTipWithText:(NSString *)tip
+{
+    return [[self alloc] initNoSaveWithClassName:[LCLTip parseClassName] WithTip:tip];
+}
+
 - (instancetype)initWithClassName:(NSString *)newClassName WithTip:(NSString *)tip WithCategory:(NSString *)category
 {
     self = [super init];
@@ -37,6 +42,20 @@
         self.endHour = 0;
         self.category = category ? category : @"";
         [self saveInBackground];
+    }
+    return self;
+}
+
+
+- (instancetype)initNoSaveWithClassName:(NSString *)newClassName WithTip:(NSString *)tip
+{
+    self = [super init];
+    if (self) {
+        self.tip = tip ? tip : @"";
+        self.tipTitle = tip ? [self shortenString:tip ToWords:5] : @"";
+        self.startHour = 0;
+        self.endHour = 0;
+        self.category = @"";
     }
     return self;
 }

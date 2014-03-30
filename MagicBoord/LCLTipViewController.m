@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
-
+    
     [MBProgressHUD showRandomMessage:@"randomizing" ForView:self.view];
     [self randomizeLikeButtonText];
     [self getRandomTip];
@@ -74,12 +74,27 @@
     
     [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
         if (!error) {
+            
+            NSMutableSet *currentTips = [NSMutableSet new];
             for (LCLRating *rating in ratings) {
-                NSMutableArray *currentTips = [[NSMutableArray alloc] init];
-                [currentTips addObject:rating.tip];
-                self.dataStore.currentUserTips = currentTips;
-                [LCLTip fetchAllIfNeeded:currentTips];
+                [currentTips addObject:rating.tip.objectId];
+                
             }
+            
+            NSMutableArray *unseenTips = [NSMutableArray new];
+            NSMutableArray *seenTips = [NSMutableArray new];
+            
+            for (LCLTip *tip in self.dataStore.tips) {
+                if ([currentTips containsObject:tip.objectId]) {
+                    [seenTips addObject:tip];
+                } else {
+                    [unseenTips addObject:tip];
+                }
+            }
+            self.dataStore.currentUserUnseenTips = unseenTips;
+            self.dataStore.currentUserTips = seenTips;
+            
+            [LCLTip fetchAllIfNeeded:seenTips];
             [self selectRandomTip];
         } else {
             NSLog(@"Ratings Not Found for User");
@@ -90,25 +105,25 @@
 - (void)selectRandomTip
 {
     // Find unseen tips
-    self.dataStore.currentUserUnseenTips = self.dataStore.tips;
-    [self.dataStore.currentUserUnseenTips removeObjectsInArray:self.dataStore.currentUserTips];
+    if ([self.dataStore.currentUserUnseenTips count] > 0 ) {
+        // Get Random Tip From Unseen
+        NSUInteger randomIndex = arc4random_uniform([self.dataStore.currentUserUnseenTips count]);
+        self.dataStore.currentTip = self.dataStore.currentUserUnseenTips[randomIndex];
+        self.tipLabel.text = self.dataStore.currentTip.tip;
+        [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.dataStore.currentTip Rating:@0];
+    } else {
+        // Create Default Tip
+        self.tipLabel.text = @"Sit down.  Seriously, you’ve seen all our tips.  We love you too, but maybe it’s time you shared this?";
+        self.dataStore.currentTip = nil;
+    }
     
-    NSUInteger randomIndex = arc4random_uniform([self.dataStore.currentUserUnseenTips count]);
-    self.dataStore.currentTip = self.dataStore.currentUserUnseenTips[randomIndex];
-    self.tipLabel.text = self.dataStore.currentTip.tip;
-    [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.dataStore.currentTip Rating:@0];
-    NSLog(@"Selecting tip: %@", self.dataStore.currentTip.tipTitle);
-    
+    // Save Last Tip Date
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"tipLastReceivedDate"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self.dataStore.currentUserTips addObject:self.dataStore.currentTip];
-    NSLog(@"Current Tips: %@", self.dataStore.currentUserTips);
-    [self.dataStore.currentUserUnseenTips removeObject:self.dataStore.currentTip];
-    NSLog(@"Unseen: %@", self.dataStore.currentUserUnseenTips);
-    
     self.likeButton.hidden = NO;
     self.dislikeButton.hidden = NO;
+
     [MBProgressHUD hideLoadingMessageForView:self.view];
 }
 
@@ -122,7 +137,7 @@
                            @"Great shot kid",
                            @"Beam me up",
                            @"Badass",
-                           @"Yummy!",
+                           @"Yummy",
                            @"That’s hot"
                            ];
     
@@ -151,12 +166,10 @@
 
 - (IBAction)likeButtonPressed:(UIButton *)sender
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     self.dataStore.currentRating = @1;
 }
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     self.dataStore.currentRating = @-1;
 }
 
