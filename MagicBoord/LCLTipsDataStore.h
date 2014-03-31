@@ -14,6 +14,8 @@
 
 @interface LCLTipsDataStore : NSObject
 extern NSInteger const TIMER_WAIT_TIME_SECONDS;
+extern NSString *const DEFAULT_TIP_TEXT;
+
 
 @property (strong, nonatomic) LCLTipsDataStore *dataStore;
 @property (strong, nonatomic) LCLTip *currentTip;
@@ -24,5 +26,6 @@ extern NSInteger const TIMER_WAIT_TIME_SECONDS;
 @property (strong, nonatomic) NSMutableArray *ratings;
 
 + (instancetype)sharedDataStore;
-
+- (NSArray *)getLikeButtonText;
+- (NSArray *)getDislikeButtonText;
 @end

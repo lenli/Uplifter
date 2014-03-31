@@ -73,8 +73,7 @@
     if (lastTipDate) secondsSinceLastTip = [[NSDate date] timeIntervalSinceDate:lastTipDate];
     
 //    [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
-    
-    
+
     if (secondsSinceLastTip >= TIMER_WAIT_TIME_SECONDS || secondsSinceLastTip == 0) {
         [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
     
@@ -83,20 +82,12 @@
     }
 }
 
-- (IBAction)showGestureForSwipeRecognizer:(UISwipeGestureRecognizer *)recognizer
-{
-    
-}
 
 #pragma mark - Helper Methods
 - (void)setupUI
 {
-    // Set up nav bar
-    NSDictionary *navBarAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      [UIFont fontWithName:@"Avenir-Roman" size:28], NSFontAttributeName,
-                                      nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:navBarAttributes];
-    [self.navigationController.navigationBar setTitleVerticalPositionAdjustment:3.f forBarMetrics:UIBarMetricsDefault];
+    // Set up navbar
+    [UIViewController setupNavigationBar:self.navigationController.navigationBar WithFont:@"Avenir-Roman" WithFontSize:28 WithVerticalPosition:3.f];
     
     // Set background for displayView
     [UIViewController setBackgroundImage:[UIImage imageNamed:@"CheckerBoard"] ForView:self.displayView];

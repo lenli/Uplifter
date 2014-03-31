@@ -30,10 +30,8 @@
 {
     [super viewDidLoad];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
-    [self setupUI];
     
-    [MBProgressHUD showRandomMessage:@"randomizing" ForView:self.view];
-    [self randomizeLikeButtonText];
+    [self setupUI];
     [self getRandomTip];
 
 }
@@ -45,11 +43,10 @@
 }
 
 
-#pragma mark - Helper Methods
+#pragma mark - Tip Fetching Helper Methods
 - (void)getRandomTip
 {
     [self fetchTipsAndRatingsAndSelectRandomTip];
-    
 }
 
 - (void)fetchTipsAndRatingsAndSelectRandomTip
@@ -115,7 +112,7 @@
         [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.dataStore.currentTip Rating:@0];
     } else {
         // Create Default Tip
-        self.tipLabel.text = @"Sit down.  Seriously, you’ve seen all our tips.  We love you too, but maybe it’s time you shared this?";
+        self.tipLabel.text = DEFAULT_TIP_TEXT;
         self.dataStore.currentTip = nil;
     }
     
@@ -129,43 +126,23 @@
     [MBProgressHUD hideLoadingMessageForView:self.view];
 }
 
-- (void)randomizeLikeButtonText
-{
-    NSArray *likeText =  @[@"You so funny",
-                           @"Ha ha nice one",
-                           @"Not bad",
-                           @"Me likey",
-                           @"#Awesome",
-                           @"Great shot kid",
-                           @"Beam me up",
-                           @"Badass",
-                           @"Yummy",
-                           @"That’s hot"
-                           ];
-    
-    NSUInteger randomLikeIndex = arc4random_uniform([likeText count]);
-
-    NSString *likeString = [NSString stringWithFormat:@"%@ %@", likeText[randomLikeIndex], @"\u2713"];
-    [self.likeButton setTitle:likeString forState: UIControlStateNormal];
-    
-    NSArray *dislikeText =  @[@"Could be better",
-                              @"Eek <Crickets>",
-                              @"No good",
-                              @"Me no likey",
-                              @"#Fail",
-                              @"Try again",
-                              @"No soup for you",
-                              @"Alrighty then",
-                              @"Weaksauce",
-                              @"Lame"
-                              ];
-    
-    NSString *dislikeString = [NSString stringWithFormat:@"%@ %@", dislikeText[randomLikeIndex], @"\u2715"];
-    [self.dislikeButton setTitle:dislikeString forState: UIControlStateNormal];
-}
+#pragma mark - UI Helper Methods
 -(void)setupUI
 {
+    [MBProgressHUD showRandomMessage:@"randomizing" ForView:self.view];
     [UIViewController setBackgroundImage:[UIImage imageNamed:@"CheckerBoard.png"] ForView:self.displayView];
+    [self randomizeLikeButtonText];
+}
+
+
+- (void)randomizeLikeButtonText
+{
+    NSUInteger randomLikeIndex = arc4random_uniform([[self.dataStore getLikeButtonText] count]);
+    NSString *likeString = [NSString stringWithFormat:@"%@ %@", [self.dataStore getLikeButtonText][randomLikeIndex], @"\u2713"];
+    [self.likeButton setTitle:likeString forState: UIControlStateNormal];
+    
+    NSString *dislikeString = [NSString stringWithFormat:@"%@ %@", [self.dataStore getDislikeButtonText][randomLikeIndex], @"\u2715"];
+    [self.dislikeButton setTitle:dislikeString forState: UIControlStateNormal];
 }
 
 #pragma mark - IBActions Methods

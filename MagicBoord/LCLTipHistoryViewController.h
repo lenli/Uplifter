@@ -14,6 +14,4 @@
 @property (strong, nonatomic) NSArray *ratingsForUser;
 @property (strong, nonatomic) LCLTipsDataStore *dataStore;
 
-extern NSInteger const TIMER_WAIT_TIME_SECONDS;
-
 @end

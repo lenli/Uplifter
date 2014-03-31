@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIViewController (Helpers)
++ (void)setupNavigationBar:(UINavigationBar *)navBar WithFont:(NSString *)fontString WithFontSize:(NSInteger)fontSize WithVerticalPosition:(CGFloat)verticalPostion;
++ (void)setupSwipeGestureForView:(UIView *)view WithSelector:(NSString *)selectorString ForDirection:(UISwipeGestureRecognizerDirection *)direction;
 + (void)setBackgroundImage:(UIImage *)bgImage ForView:(UIView *)view;
 
 @end
