@@ -27,8 +27,8 @@
 		876B51B518D658A80063C5E4 /* LCLTipHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B51B418D658A80063C5E4 /* LCLTipHistoryViewController.m */; };
 		876B521818DA8C5F0063C5E4 /* LCLRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B521718DA8C5F0063C5E4 /* LCLRating.m */; };
 		8788698718E88B8E00BC5C9E /* CheckerBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 8788698618E88B8E00BC5C9E /* CheckerBoard.png */; };
-		8788698B18E8B3EA00BC5C9E /* Lever.png in Resources */ = {isa = PBXBuildFile; fileRef = 8788698A18E8B3EA00BC5C9E /* Lever.png */; };
 		8788699418E9003800BC5C9E /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8788699318E9003800BC5C9E /* UIViewController+Helpers.m */; };
+		8788699818E9454500BC5C9E /* Lever.png in Resources */ = {isa = PBXBuildFile; fileRef = 8788699718E9454500BC5C9E /* Lever.png */; };
 		87AF7AF918DB7DA6001C6FCC /* MBProgressHUD+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */; };
 		87AF7AFC18DB8484001C6FCC /* LCLTipsDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7AFB18DB8484001C6FCC /* LCLTipsDataStore.m */; };
 		87AF7B1018E23C1A001C6FCC /* LCLTipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF7B0F18E23C1A001C6FCC /* LCLTipTableViewCell.m */; };
@@ -47,20 +47,19 @@
 
 /* Begin PBXFileReference section */
 		4235C290072749D69C5795B1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		8700C75318D390020015B0DE /* MagicBoord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicBoord.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8700C75318D390020015B0DE /* Uplifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uplifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8700C75618D390020015B0DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8700C75818D390020015B0DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8700C75A18D390020015B0DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		8700C75E18D390020015B0DE /* MagicBoord-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MagicBoord-Info.plist"; sourceTree = "<group>"; };
 		8700C76018D390020015B0DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8700C76218D390020015B0DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8700C76418D390020015B0DE /* MagicBoord-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MagicBoord-Prefix.pch"; sourceTree = "<group>"; };
+		8700C76418D390020015B0DE /* Uplifter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Uplifter-Prefix.pch"; sourceTree = "<group>"; };
 		8700C76518D390020015B0DE /* LCLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCLAppDelegate.h; sourceTree = "<group>"; };
 		8700C76618D390020015B0DE /* LCLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCLAppDelegate.m; sourceTree = "<group>"; };
 		8700C76818D390020015B0DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8700C76E18D390020015B0DE /* MagicBoordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagicBoordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8700C76E18D390020015B0DE /* UplifterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UplifterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8700C76F18D390020015B0DE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		8700C77718D390020015B0DE /* MagicBoordTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MagicBoordTests-Info.plist"; sourceTree = "<group>"; };
+		8700C77718D390020015B0DE /* UplifterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UplifterTests-Info.plist"; sourceTree = "<group>"; };
 		8700C77918D390020015B0DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8700C77B18D390020015B0DE /* MagicBoordTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MagicBoordTests.m; sourceTree = "<group>"; };
 		8700C78818D3A0DE0015B0DE /* LCLTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTip.h; sourceTree = "<group>"; };
@@ -77,9 +76,10 @@
 		876B521618DA8C5F0063C5E4 /* LCLRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLRating.h; sourceTree = "<group>"; };
 		876B521718DA8C5F0063C5E4 /* LCLRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLRating.m; sourceTree = "<group>"; };
 		8788698618E88B8E00BC5C9E /* CheckerBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckerBoard.png; sourceTree = "<group>"; };
-		8788698A18E8B3EA00BC5C9E /* Lever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lever.png; sourceTree = "<group>"; };
 		8788699218E9003800BC5C9E /* UIViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helpers.h"; sourceTree = "<group>"; };
 		8788699318E9003800BC5C9E /* UIViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helpers.m"; sourceTree = "<group>"; };
+		8788699518E9403C00BC5C9E /* Uplifter-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Uplifter-Info.plist"; sourceTree = "<group>"; };
+		8788699718E9454500BC5C9E /* Lever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lever.png; sourceTree = "<group>"; };
 		87AF7AF718DB7DA6001C6FCC /* MBProgressHUD+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Helpers.h"; sourceTree = "<group>"; };
 		87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Helpers.m"; sourceTree = "<group>"; };
 		87AF7AFA18DB8484001C6FCC /* LCLTipsDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipsDataStore.h; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 		8700C75418D390020015B0DE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8700C75318D390020015B0DE /* MagicBoord.app */,
-				8700C76E18D390020015B0DE /* MagicBoordTests.xctest */,
+				8700C75318D390020015B0DE /* Uplifter.app */,
+				8700C76E18D390020015B0DE /* UplifterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,12 +163,12 @@
 		8700C75D18D390020015B0DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8788698A18E8B3EA00BC5C9E /* Lever.png */,
+				8788699718E9454500BC5C9E /* Lever.png */,
+				8788699518E9403C00BC5C9E /* Uplifter-Info.plist */,
 				8788698618E88B8E00BC5C9E /* CheckerBoard.png */,
-				8700C75E18D390020015B0DE /* MagicBoord-Info.plist */,
 				8700C75F18D390020015B0DE /* InfoPlist.strings */,
 				8700C76218D390020015B0DE /* main.m */,
-				8700C76418D390020015B0DE /* MagicBoord-Prefix.pch */,
+				8700C76418D390020015B0DE /* Uplifter-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 		8700C77618D390020015B0DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8700C77718D390020015B0DE /* MagicBoordTests-Info.plist */,
+				8700C77718D390020015B0DE /* UplifterTests-Info.plist */,
 				8700C77818D390020015B0DE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -228,9 +228,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8700C75218D390020015B0DE /* MagicBoord */ = {
+		8700C75218D390020015B0DE /* Uplifter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8700C77F18D390020015B0DE /* Build configuration list for PBXNativeTarget "MagicBoord" */;
+			buildConfigurationList = 8700C77F18D390020015B0DE /* Build configuration list for PBXNativeTarget "Uplifter" */;
 			buildPhases = (
 				041D8551B2BD4FCAAD5FE411 /* Check Pods Manifest.lock */,
 				8700C74F18D390020015B0DE /* Sources */,
@@ -242,14 +242,14 @@
 			);
 			dependencies = (
 			);
-			name = MagicBoord;
+			name = Uplifter;
 			productName = MagicBoord;
-			productReference = 8700C75318D390020015B0DE /* MagicBoord.app */;
+			productReference = 8700C75318D390020015B0DE /* Uplifter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8700C76D18D390020015B0DE /* MagicBoordTests */ = {
+		8700C76D18D390020015B0DE /* UplifterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8700C78218D390020015B0DE /* Build configuration list for PBXNativeTarget "MagicBoordTests" */;
+			buildConfigurationList = 8700C78218D390020015B0DE /* Build configuration list for PBXNativeTarget "UplifterTests" */;
 			buildPhases = (
 				8700C76A18D390020015B0DE /* Sources */,
 				8700C76B18D390020015B0DE /* Frameworks */,
@@ -260,9 +260,9 @@
 			dependencies = (
 				8700C77418D390020015B0DE /* PBXTargetDependency */,
 			);
-			name = MagicBoordTests;
+			name = UplifterTests;
 			productName = MagicBoordTests;
-			productReference = 8700C76E18D390020015B0DE /* MagicBoordTests.xctest */;
+			productReference = 8700C76E18D390020015B0DE /* UplifterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -288,7 +288,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8700C74E18D390020015B0DE /* Build configuration list for PBXProject "MagicBoord" */;
+			buildConfigurationList = 8700C74E18D390020015B0DE /* Build configuration list for PBXProject "Uplifter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -300,8 +300,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8700C75218D390020015B0DE /* MagicBoord */,
-				8700C76D18D390020015B0DE /* MagicBoordTests */,
+				8700C75218D390020015B0DE /* Uplifter */,
+				8700C76D18D390020015B0DE /* UplifterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -311,7 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8788698B18E8B3EA00BC5C9E /* Lever.png in Resources */,
+				8788699818E9454500BC5C9E /* Lever.png in Resources */,
 				8700C78C18D3EE940015B0DE /* iphone.storyboard in Resources */,
 				8788698718E88B8E00BC5C9E /* CheckerBoard.png in Resources */,
 				8700C76118D390020015B0DE /* InfoPlist.strings in Resources */,
@@ -395,7 +395,7 @@
 /* Begin PBXTargetDependency section */
 		8700C77418D390020015B0DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8700C75218D390020015B0DE /* MagicBoord */;
+			target = 8700C75218D390020015B0DE /* Uplifter */;
 			targetProxy = 8700C77318D390020015B0DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -498,9 +498,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Leonard Li (HCN3MGAT6U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MagicBoord/MagicBoord-Prefix.pch";
-				INFOPLIST_FILE = "MagicBoord/MagicBoord-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "MagicBoord/Uplifter-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/MagicBoord/Uplifter-Info.plist";
+				PRODUCT_NAME = Uplifter;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -513,9 +513,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Leonard Li (HCN3MGAT6U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MagicBoord/MagicBoord-Prefix.pch";
-				INFOPLIST_FILE = "MagicBoord/MagicBoord-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "MagicBoord/Uplifter-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/MagicBoord/Uplifter-Info.plist";
+				PRODUCT_NAME = Uplifter;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -535,8 +535,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "MagicBoordTests/MagicBoordTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "MagicBoordTests/UplifterTests-Info.plist";
+				PRODUCT_NAME = UplifterTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -553,8 +553,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MagicBoord/MagicBoord-Prefix.pch";
-				INFOPLIST_FILE = "MagicBoordTests/MagicBoordTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "MagicBoordTests/UplifterTests-Info.plist";
+				PRODUCT_NAME = UplifterTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -563,7 +563,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8700C74E18D390020015B0DE /* Build configuration list for PBXProject "MagicBoord" */ = {
+		8700C74E18D390020015B0DE /* Build configuration list for PBXProject "Uplifter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8700C77D18D390020015B0DE /* Debug */,
@@ -572,7 +572,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8700C77F18D390020015B0DE /* Build configuration list for PBXNativeTarget "MagicBoord" */ = {
+		8700C77F18D390020015B0DE /* Build configuration list for PBXNativeTarget "Uplifter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8700C78018D390020015B0DE /* Debug */,
@@ -581,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8700C78218D390020015B0DE /* Build configuration list for PBXNativeTarget "MagicBoordTests" */ = {
+		8700C78218D390020015B0DE /* Build configuration list for PBXNativeTarget "UplifterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8700C78318D390020015B0DE /* Debug */,
