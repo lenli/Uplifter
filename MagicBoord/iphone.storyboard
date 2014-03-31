@@ -59,8 +59,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoL-av-Hbs">
-                                        <rect key="frame" x="101" y="310" width="118" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoL-av-Hbs">
+                                        <rect key="frame" x="115" y="310" width="90" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="12"/>
                                         <state key="normal" title="Problems? Reset">
@@ -363,6 +363,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HhG-EV-zM3"/>
+        <segue reference="4Us-yW-KwL"/>
     </inferredMetricsTieBreakers>
 </document>
