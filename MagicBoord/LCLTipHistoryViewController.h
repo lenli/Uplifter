@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LCLTipsDataStore.h"
+#import "UIViewController+Helpers.h"
 
 @interface LCLTipHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSArray *ratingsForUser;

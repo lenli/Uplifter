@@ -55,7 +55,7 @@
     //    NSLog(@"%@", array);
     //    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
     
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"Check out this cool app called Uplifter:  http://lenli.com", nil] applicationActivities:nil];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"Check out this cool app called Uplifter: https://twitter.com/uplifterapp", nil] applicationActivities:nil];
     activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
     [self presentViewController:activityVC animated:YES completion:nil];
 }
@@ -64,11 +64,7 @@
 
 - (void)setupMessageView
 {
-    UIGraphicsBeginImageContext(self.messageView.frame.size);
-    [[UIImage imageNamed:@"CheckerBoard.png"] drawAsPatternInRect:self.messageView.bounds];
-    UIImage *checkerBG = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.messageView.backgroundColor = [UIColor colorWithPatternImage:checkerBG];
+    [UIViewController setBackgroundImage:[UIImage imageNamed:@"CheckerBoard.png"] ForView:self.messageView];
     self.countdownLabel.text = @"";
 }
 - (void)setupTableView

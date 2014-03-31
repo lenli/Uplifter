@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LCLTipsDataStore.h"
+#import "UIViewController+Helpers.h"
 
 @interface LCLTipViewController : UIViewController
 @property (strong, nonatomic) LCLTipsDataStore *dataStore;

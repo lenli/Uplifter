@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIView *displayView;
 @end
 
 @implementation LCLTipViewController
@@ -29,6 +30,7 @@
 {
     [super viewDidLoad];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
+    [self setupUI];
     
     [MBProgressHUD showRandomMessage:@"randomizing" ForView:self.view];
     [self randomizeLikeButtonText];
@@ -160,6 +162,10 @@
     
     NSString *dislikeString = [NSString stringWithFormat:@"%@ %@", dislikeText[randomLikeIndex], @"\u2715"];
     [self.dislikeButton setTitle:dislikeString forState: UIControlStateNormal];
+}
+-(void)setupUI
+{
+    [UIViewController setBackgroundImage:[UIImage imageNamed:@"CheckerBoard.png"] ForView:self.displayView];
 }
 
 #pragma mark - IBActions Methods

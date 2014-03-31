@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *redButton;
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property (weak, nonatomic) IBOutlet UIView *displayView;
 
 @end
 
@@ -30,8 +31,7 @@
 {
     [super viewDidLoad];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
-    [self setupNavBar];
-
+    [self setupUI];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,24 +72,40 @@
     NSDate *lastTipDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"tipLastReceivedDate"];
     if (lastTipDate) secondsSinceLastTip = [[NSDate date] timeIntervalSinceDate:lastTipDate];
     
-    [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+//    [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
     
     
-//    if (secondsSinceLastTip >= TIMER_WAIT_TIME_SECONDS || secondsSinceLastTip == 0) {
-//        [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
-//    } else {
-//        [self performSegueWithIdentifier:@"mainToTipHistorySegue" sender:sender];
-//    }
+    if (secondsSinceLastTip >= TIMER_WAIT_TIME_SECONDS || secondsSinceLastTip == 0) {
+        [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+    
+    } else {
+        [self performSegueWithIdentifier:@"mainToTipHistorySegue" sender:sender];
+    }
+}
+
+- (IBAction)showGestureForSwipeRecognizer:(UISwipeGestureRecognizer *)recognizer
+{
+    
 }
 
 #pragma mark - Helper Methods
-- (void)setupNavBar
+- (void)setupUI
 {
+    // Set up nav bar
     NSDictionary *navBarAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                       [UIFont fontWithName:@"Avenir-Roman" size:28], NSFontAttributeName,
                                       nil];
     [self.navigationController.navigationBar setTitleTextAttributes:navBarAttributes];
     [self.navigationController.navigationBar setTitleVerticalPositionAdjustment:3.f forBarMetrics:UIBarMetricsDefault];
+    
+    // Set background for displayView
+    [UIViewController setBackgroundImage:[UIImage imageNamed:@"CheckerBoard"] ForView:self.displayView];
+    
+    // Set up gesture recognizers
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(mainButtonPressed:)];
+    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeUp];
+
 }
 
 
