@@ -22,34 +22,97 @@ NSString *const DEFAULT_TIP_TEXT = @"Sit down.  Seriously, you’ve seen all our
     return _sharedDataStore;
 }
 
-- (NSArray *)getLikeButtonText
+- (NSArray *)getLikeButtonArray
 {
     return @[@"You so funny",
-            @"Ha ha nice one",
-            @"Not bad",
-            @"Me likey",
-            @"#Awesome",
-            @"Great shot kid",
-            @"Beam me up",
-            @"Badass",
-            @"Yummy",
-            @"That’s hot"
-            ];
+             @"Ha ha nice one",
+             @"Not bad",
+             @"Me likey",
+             @"#Awesome",
+             @"Great shot kid",
+             @"Beam me up",
+             @"Badass",
+             @"Yummy",
+             @"That’s hot"
+             ];
 }
 
-- (NSArray *)getDislikeButtonText
+- (NSArray *)getDislikeButtonArray
 {
     return @[@"Could be better",
-      @"Eek <Crickets>",
-      @"No good",
-      @"Me no likey",
-      @"#Fail",
-      @"Try again",
-      @"No soup for you",
-      @"Alrighty then",
-      @"Weaksauce",
-      @"Lame"
-      ];
+             @"Eek <Crickets>",
+             @"No good",
+             @"Me no likey",
+             @"#Fail",
+             @"Try again",
+             @"No soup for you",
+             @"Alrighty then",
+             @"Weaksauce",
+             @"Lame"
+             ];
+}
+
+- (NSArray *)getTitleTextArray
+{
+    return @[@"Uplifter",
+             @"Uplifter",
+             @"Uplifter",
+             @"Uplifter",
+             @"Bored?",
+             @"Sad?",
+             @"Need a laugh?",
+             @"Break time?",
+             @"Nothing to do?",
+             @"Need a smile?",
+             @"Why So Serious?"
+             ];
+}
+
+- (NSInteger)getRandomLikeButtonIndex
+{
+    NSArray *likeButtonText = [self getLikeButtonArray];
+    return arc4random_uniform([likeButtonText count]);
+}
+
+- (NSString *)getLikeButtonTextWithIndex:(NSInteger)index
+{
+    NSArray *likeButtonText = [self getLikeButtonArray];
+    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform([likeButtonText count]);
+    return likeButtonText[randomLikeIndex];
+}
+
+- (NSString *)getRandomLikeButtonText
+{
+    return [self getLikeButtonTextWithIndex:-1];
+}
+
+- (NSString *)getDislikeButtonTextWithIndex:(NSInteger)index
+{
+    NSArray *dislikeButtonText = [self getDislikeButtonArray];
+    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform([dislikeButtonText count]);
+    return dislikeButtonText[randomLikeIndex];
+}
+
+- (NSString *)getRandomDislikeButtonText
+{
+    return [self getDislikeButtonTextWithIndex:-1];
+}
+
+-(NSInteger)getTitleTextCount
+{
+    return [[self getTitleTextArray] count];
+}
+
+- (NSString *)getTitleTextWithIndex:(NSInteger)index
+{
+    NSArray *titleText = [self getTitleTextArray];
+    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform([titleText count]);
+    return titleText[randomLikeIndex];
+}
+
+-(NSString *)getRandomTitleText
+{
+    return [self getTitleTextWithIndex:-1];
 }
 
 @end

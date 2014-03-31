@@ -137,11 +137,12 @@
 
 - (void)randomizeLikeButtonText
 {
-    NSUInteger randomLikeIndex = arc4random_uniform([[self.dataStore getLikeButtonText] count]);
-    NSString *likeString = [NSString stringWithFormat:@"%@ %@", [self.dataStore getLikeButtonText][randomLikeIndex], @"\u2713"];
+    NSUInteger randomLikeIndex = [self.dataStore getRandomLikeButtonIndex];
+    
+    NSString *likeString = [NSString stringWithFormat:@"%@ %@", [self.dataStore getLikeButtonTextWithIndex:randomLikeIndex], @"\u2713"];
     [self.likeButton setTitle:likeString forState: UIControlStateNormal];
     
-    NSString *dislikeString = [NSString stringWithFormat:@"%@ %@", [self.dataStore getDislikeButtonText][randomLikeIndex], @"\u2715"];
+    NSString *dislikeString = [NSString stringWithFormat:@"%@ %@", [self.dataStore getDislikeButtonTextWithIndex:randomLikeIndex], @"\u2715"];
     [self.dislikeButton setTitle:dislikeString forState: UIControlStateNormal];
 }
 

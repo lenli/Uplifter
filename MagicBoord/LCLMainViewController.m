@@ -10,6 +10,7 @@
 
 @interface LCLMainViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *redButton;
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
 @property (weak, nonatomic) IBOutlet UIView *displayView;
@@ -32,6 +33,7 @@
     [super viewDidLoad];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
     [self setupUI];
+    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(swapTitleText) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,6 +101,22 @@
 
 }
 
+- (void)swapTitleText
+{
+    [UIView animateWithDuration:1.0
+                           delay:0.0  /* starts the animation after 3 seconds */
+                         options:UIViewAnimationOptionCurveEaseInOut
+                      animations:^ {
+                          self.titleLabel.alpha = 0.0;
+                          self.subtitleLabel.text = @"[  lift the lever  ]";
+                      }
+                      completion:^(BOOL finished) {
+                          self.titleLabel.text = [self.dataStore getRandomTitleText];
+                          self.titleLabel.alpha = 1.0;
+                          self.subtitleLabel.text = @"[   lift the lever   ]";
+                      }];
+    
+}
 
 
 

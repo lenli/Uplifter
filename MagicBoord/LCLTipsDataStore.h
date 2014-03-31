@@ -26,6 +26,16 @@ extern NSString *const DEFAULT_TIP_TEXT;
 @property (strong, nonatomic) NSMutableArray *ratings;
 
 + (instancetype)sharedDataStore;
-- (NSArray *)getLikeButtonText;
-- (NSArray *)getDislikeButtonText;
+- (NSArray *)getLikeButtonArray;
+- (NSArray *)getDislikeButtonArray;
+- (NSArray *)getTitleTextArray;
+
+- (NSInteger)getRandomLikeButtonIndex;
+- (NSString *)getLikeButtonTextWithIndex:(NSInteger)index;
+- (NSString *)getRandomLikeButtonText;
+- (NSString *)getDislikeButtonTextWithIndex:(NSInteger)index;
+- (NSString *)getRandomDislikeButtonText;
+- (NSString *)getTitleTextWithIndex:(NSInteger)index;
+- (NSString *)getRandomTitleText;
+
 @end

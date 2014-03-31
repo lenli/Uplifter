@@ -20,10 +20,10 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bored?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-wR-YX9">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Uplifter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-wR-YX9">
                                         <rect key="frame" x="91" y="30" width="138" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="43"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="36"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -98,6 +98,7 @@
                         <outlet property="displayView" destination="kWa-Lo-9JZ" id="4p2-5t-S3O"/>
                         <outlet property="redButton" destination="U5Q-Yz-0QU" id="tFc-3x-fNM"/>
                         <outlet property="resetButton" destination="RoL-av-Hbs" id="Xcy-nw-ZQ9"/>
+                        <outlet property="subtitleLabel" destination="ccr-6o-vTo" id="PdI-Mj-v7F"/>
                         <outlet property="titleLabel" destination="Xr5-wR-YX9" id="qlM-V5-Rhe"/>
                         <segue destination="h51-mT-z3V" kind="push" identifier="mainToTipSegue" id="Vdk-kR-GLl"/>
                         <segue destination="MQE-jJ-weB" kind="push" identifier="mainToTipHistorySegue" id="4Us-yW-KwL"/>
@@ -106,7 +107,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF4-zi-uYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="up" id="AuK-eZ-JLl"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="-52"/>
+            <point key="canvasLocation" x="190" y="72"/>
         </scene>
         <!--Tip View Controller - Uplifter-->
         <scene sceneID="6g3-X5-le7">
@@ -199,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-RE-sk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1754" y="-132"/>
+            <point key="canvasLocation" x="732" y="-8"/>
         </scene>
         <!--Tip History View Controller - Uplifter-->
         <scene sceneID="Aov-ff-520">
@@ -227,8 +228,8 @@
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="36"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humor takes time. Get another one in:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="141" translatesAutoresizingMaskIntoConstraints="NO" id="5f7-EZ-FDm">
-                                        <rect key="frame" x="90" y="30" width="141" height="44"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humor takes time to prepare. Get another one in:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="218" translatesAutoresizingMaskIntoConstraints="NO" id="5f7-EZ-FDm">
+                                        <rect key="frame" x="51" y="30" width="218" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                         <nil key="highlightedColor"/>
@@ -309,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PZ-Du-QyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2189" y="423"/>
+            <point key="canvasLocation" x="1167" y="547"/>
         </scene>
         <!--Navigation Controller - Uplifter-->
         <scene sceneID="Oxs-X4-iZs">
@@ -331,7 +332,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M85-Tp-A3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="-52"/>
+            <point key="canvasLocation" x="-336" y="72"/>
         </scene>
     </scenes>
     <resources>
@@ -344,6 +345,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HhG-EV-zM3"/>
+        <segue reference="4Us-yW-KwL"/>
     </inferredMetricsTieBreakers>
 </document>
