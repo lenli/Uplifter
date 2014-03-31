@@ -64,7 +64,8 @@ NSString *const DEFAULT_TIP_TEXT = @"Sit down.  Seriously, you’ve seen all our
              @"Break time?",
              @"Nothing to do?",
              @"Need a smile?",
-             @"Why so serious?"
+             @"Why so serious?",
+             @"We up lift you"
              ];
 }
 
