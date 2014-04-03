@@ -169,6 +169,18 @@
     timer.timeFormat = @"mm:ss";
     [timer setCountDownTime:waitSeconds-secondsSinceLastTip];
     [timer start];
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [lastTipDate dateByAddingTimeInterval:waitSeconds];
+    localNotification.alertBody = @"Testing123";
+    localNotification.alertAction = @"newTip";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    NSLog(@"LOCAL NOTIFICATION: %@", localNotification);
+    
+    
+    
 }
 
 @end
