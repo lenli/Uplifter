@@ -22,6 +22,8 @@
 		8700C78A18D3A0DE0015B0DE /* LCLTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8700C78918D3A0DE0015B0DE /* LCLTip.m */; };
 		8700C78C18D3EE940015B0DE /* iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8700C78B18D3EE940015B0DE /* iphone.storyboard */; };
 		8700C79B18D4C4E80015B0DE /* LCLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8700C79A18D4C4E80015B0DE /* LCLUser.m */; };
+		8718659C18E9AC1000627C22 /* UIStoryboardSegue+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8718659B18E9AC1000627C22 /* UIStoryboardSegue+Helpers.m */; };
+		871865A018E9F11A00627C22 /* LeverFlipped.png in Resources */ = {isa = PBXBuildFile; fileRef = 8718659F18E9F11A00627C22 /* LeverFlipped.png */; };
 		872F258F18D553BA005B36EC /* LCLTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 872F258E18D553BA005B36EC /* LCLTipViewController.m */; };
 		876B51AF18D654DE0063C5E4 /* LCLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B51AE18D654DE0063C5E4 /* LCLMainViewController.m */; };
 		876B51B518D658A80063C5E4 /* LCLTipHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B51B418D658A80063C5E4 /* LCLTipHistoryViewController.m */; };
@@ -67,6 +69,9 @@
 		8700C78B18D3EE940015B0DE /* iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iphone.storyboard; sourceTree = "<group>"; };
 		8700C79918D4C4E80015B0DE /* LCLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLUser.h; sourceTree = "<group>"; };
 		8700C79A18D4C4E80015B0DE /* LCLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLUser.m; sourceTree = "<group>"; };
+		8718659A18E9AC1000627C22 /* UIStoryboardSegue+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboardSegue+Helpers.h"; sourceTree = "<group>"; };
+		8718659B18E9AC1000627C22 /* UIStoryboardSegue+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+Helpers.m"; sourceTree = "<group>"; };
+		8718659F18E9F11A00627C22 /* LeverFlipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LeverFlipped.png; sourceTree = "<group>"; };
 		872F258D18D553BA005B36EC /* LCLTipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLTipViewController.h; sourceTree = "<group>"; };
 		872F258E18D553BA005B36EC /* LCLTipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLTipViewController.m; sourceTree = "<group>"; };
 		876B51AD18D654DE0063C5E4 /* LCLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLMainViewController.h; sourceTree = "<group>"; };
@@ -164,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				8788699718E9454500BC5C9E /* Lever.png */,
+				8718659F18E9F11A00627C22 /* LeverFlipped.png */,
 				8788699518E9403C00BC5C9E /* Uplifter-Info.plist */,
 				8788698618E88B8E00BC5C9E /* CheckerBoard.png */,
 				8700C75F18D390020015B0DE /* InfoPlist.strings */,
@@ -194,6 +200,8 @@
 		8700C79C18D4C4F10015B0DE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8718659A18E9AC1000627C22 /* UIStoryboardSegue+Helpers.h */,
+				8718659B18E9AC1000627C22 /* UIStoryboardSegue+Helpers.m */,
 				87AF7AF718DB7DA6001C6FCC /* MBProgressHUD+Helpers.h */,
 				87AF7AF818DB7DA6001C6FCC /* MBProgressHUD+Helpers.m */,
 				8788699218E9003800BC5C9E /* UIViewController+Helpers.h */,
@@ -316,6 +324,7 @@
 				8788698718E88B8E00BC5C9E /* CheckerBoard.png in Resources */,
 				8700C76118D390020015B0DE /* InfoPlist.strings in Resources */,
 				8700C76918D390020015B0DE /* Images.xcassets in Resources */,
+				871865A018E9F11A00627C22 /* LeverFlipped.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +382,7 @@
 				8700C79B18D4C4E80015B0DE /* LCLUser.m in Sources */,
 				8788699418E9003800BC5C9E /* UIViewController+Helpers.m in Sources */,
 				87AF7B1018E23C1A001C6FCC /* LCLTipTableViewCell.m in Sources */,
+				8718659C18E9AC1000627C22 /* UIStoryboardSegue+Helpers.m in Sources */,
 				876B51AF18D654DE0063C5E4 /* LCLMainViewController.m in Sources */,
 				876B521818DA8C5F0063C5E4 /* LCLRating.m in Sources */,
 				87AF7AF918DB7DA6001C6FCC /* MBProgressHUD+Helpers.m in Sources */,

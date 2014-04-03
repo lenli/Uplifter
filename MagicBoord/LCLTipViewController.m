@@ -106,7 +106,7 @@
     // Find unseen tips
     if ([self.dataStore.currentUserUnseenTips count] > 0 ) {
         // Get Random Tip From Unseen
-        NSUInteger randomIndex = arc4random_uniform([self.dataStore.currentUserUnseenTips count]);
+        NSUInteger randomIndex = arc4random_uniform((u_int32_t)[self.dataStore.currentUserUnseenTips count]);
         self.dataStore.currentTip = self.dataStore.currentUserUnseenTips[randomIndex];
         self.tipLabel.text = self.dataStore.currentTip.tip;
         [LCLRating ratingWithUser:[LCLUser currentUser] Tip:self.dataStore.currentTip Rating:@0];

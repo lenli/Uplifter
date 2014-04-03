@@ -54,31 +54,25 @@ NSString *const DEFAULT_TIP_TEXT = @"Sit down.  Seriously, you’ve seen all our
 
 - (NSArray *)getTitleTextArray
 {
-    return @[@"Uplifter",
-             @"Uplifter",
-             @"Uplifter",
-             @"Uplifter",
-             @"Bored?",
-             @"Sad?",
+    return @[@"Bored?",
              @"Need a laugh?",
              @"Break time?",
              @"Nothing to do?",
              @"Need a smile?",
-             @"Why so serious?",
-             @"Witty one-liners"
+             @"Why so serious?"
              ];
 }
 
 - (NSInteger)getRandomLikeButtonIndex
 {
     NSArray *likeButtonText = [self getLikeButtonArray];
-    return arc4random_uniform([likeButtonText count]);
+    return arc4random_uniform((u_int32_t)[likeButtonText count]);
 }
 
 - (NSString *)getLikeButtonTextWithIndex:(NSInteger)index
 {
     NSArray *likeButtonText = [self getLikeButtonArray];
-    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform([likeButtonText count]);
+    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform((u_int32_t)[likeButtonText count]);
     return likeButtonText[randomLikeIndex];
 }
 
@@ -90,7 +84,7 @@ NSString *const DEFAULT_TIP_TEXT = @"Sit down.  Seriously, you’ve seen all our
 - (NSString *)getDislikeButtonTextWithIndex:(NSInteger)index
 {
     NSArray *dislikeButtonText = [self getDislikeButtonArray];
-    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform([dislikeButtonText count]);
+    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform((u_int32_t)[dislikeButtonText count]);
     return dislikeButtonText[randomLikeIndex];
 }
 
@@ -107,7 +101,7 @@ NSString *const DEFAULT_TIP_TEXT = @"Sit down.  Seriously, you’ve seen all our
 - (NSString *)getTitleTextWithIndex:(NSInteger)index
 {
     NSArray *titleText = [self getTitleTextArray];
-    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform([titleText count]);
+    NSUInteger randomLikeIndex = (index >= 0) ? index : arc4random_uniform((u_int32_t)[titleText count]);
     return titleText[randomLikeIndex];
 }
 

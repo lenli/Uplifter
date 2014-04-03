@@ -41,7 +41,7 @@
                       @"Setting thrusters to full"
                       ];
     }
-    NSUInteger randomMessageIndex = arc4random_uniform([messages count]);
+    NSUInteger randomMessageIndex = arc4random_uniform((u_int32_t)[messages count]);
     [MBProgressHUD showLoadingMessage:messages[randomMessageIndex] ForView:view];
 }
 
