@@ -19,4 +19,5 @@
     #import <FBShimmeringView.h>
     #import <FBShimmeringLayer.h>
     #import "FontAwesomeKit/FontAwesomeKit.h"
+    #import <AFNetworkReachabilityManager.h>
 #endif

@@ -36,12 +36,15 @@
     self.dataStore = [LCLTipsDataStore sharedDataStore];
     [self setupUI];
     [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(swapTitleText) userInfo:nil repeats:YES];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.redButton setImage:[UIImage imageNamed:@"Lever"] forState:UIControlStateNormal];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,21 +81,28 @@
 
 - (IBAction)mainButtonPressed:(UIButton *)sender
 {
-    [self.redButton setImage:[UIImage imageNamed:@"LeverFlipped"] forState:UIControlStateHighlighted];
-    [self.redButton setImage:[UIImage imageNamed:@"LeverFlipped"] forState:UIControlStateSelected];
-    [self.redButton setImage:[UIImage imageNamed:@"LeverFlipped"] forState:UIControlStateNormal];
-
-    NSTimeInterval secondsSinceLastTip = 0;
-    NSDate *lastTipDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"tipLastReceivedDate"];
-    if (lastTipDate) secondsSinceLastTip = [[NSDate date] timeIntervalSinceDate:lastTipDate];
-    
-    //    [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
-    
-    if (secondsSinceLastTip >= TIMER_WAIT_TIME_SECONDS || secondsSinceLastTip == 0) {
-        [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+    if ([AFNetworkReachabilityManager sharedManager].reachable) {
+        [self.redButton setImage:[UIImage imageNamed:@"LeverFlipped"] forState:UIControlStateHighlighted];
+        [self.redButton setImage:[UIImage imageNamed:@"LeverFlipped"] forState:UIControlStateSelected];
+        [self.redButton setImage:[UIImage imageNamed:@"LeverFlipped"] forState:UIControlStateNormal];
+        
+        NSTimeInterval secondsSinceLastTip = 0;
+        NSDate *lastTipDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"tipLastReceivedDate"];
+        if (lastTipDate) secondsSinceLastTip = [[NSDate date] timeIntervalSinceDate:lastTipDate];
+        
+        //    [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+        
+        if (secondsSinceLastTip >= TIMER_WAIT_TIME_SECONDS || secondsSinceLastTip == 0) {
+            [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+        } else {
+            [self performSegueWithIdentifier:@"mainToTipHistorySegue" sender:sender];
+        }
     } else {
-        [self performSegueWithIdentifier:@"mainToTipHistorySegue" sender:sender];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"No Internet found" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alertView show];
     }
+    
+
 
 
 }
