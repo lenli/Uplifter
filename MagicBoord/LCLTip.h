@@ -10,16 +10,26 @@
 
 @interface LCLTip : PFObject <PFSubclassing>
 
+@property (strong, nonatomic) NSString *number;
+@property (strong, nonatomic) NSString *tip;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *author;
+@property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSString *subcategory;
+@property (strong, nonatomic) NSString *hashtag;
+
 + (NSString *)parseClassName;
 
-@property (strong, nonatomic) NSString *tip;
-@property (strong, nonatomic) NSString *tipTitle;
-@property (nonatomic) NSInteger startHour;
-@property (nonatomic) NSInteger endHour;
-@property (strong, nonatomic) NSString *category;
++ (instancetype)tipWithText:(NSString *)tip
+                     Number:(NSInteger)number
+                     Author:(NSString *)author
+                   Category:(NSString *)category
+                Subcategory:(NSString *)subcategory;
 
-+ (instancetype)tipWithText:(NSString *)tip Category:(NSString *)category;
-+ (instancetype)defaultTipWithText:(NSString *)tip;
-- (instancetype)initWithClassName:(NSString *)newClassName WithTip:(NSString *)tip WithCategory:(NSString *)category;
-- (instancetype)initNoSaveWithClassName:(NSString *)newClassName WithTip:(NSString *)tip;
+- (instancetype)initWithClassName:(NSString *)newClassName
+                           Number:(NSInteger)number
+                              Tip:(NSString *)tip
+                           Author:(NSString *)author
+                         Category:(NSString *)category
+                      Subcategory:(NSString *)subcategory;
 @end

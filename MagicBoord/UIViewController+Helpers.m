@@ -11,6 +11,7 @@
 @implementation UIViewController (Helpers)
 + (void)setupNavigationBar:(UINavigationBar *)navBar WithFont:(NSString *)fontString WithFontSize:(NSInteger)fontSize WithVerticalPosition:(CGFloat)verticalPostion
 {
+    
     NSDictionary *navBarAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                       [UIFont fontWithName:fontString size:fontSize], NSFontAttributeName,
                                       nil];

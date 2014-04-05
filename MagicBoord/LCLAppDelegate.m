@@ -24,21 +24,20 @@
     
     [Parse setApplicationId:@"sQlOhsEuKc3PM0gZtoCNLPf6X4VVDdsVhqV1xKDU"
                   clientKey:@"o5xMW54dBllSp2nSuU1aPBKotx3q2hxvzqsFoBWd"];
+ 
+    //    [LCLUser enableAutomaticUser];
+    //    [[LCLUser currentUser] incrementKey:@"RunCount"];
     
-    [LCLUser enableAutomaticUser];
-    [[LCLUser currentUser] saveInBackground];
-    
-//    [[LCLUser currentUser] incrementKey:@"RunCount"];
-    
-//
-//    [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
-//        if (error) {
-//            NSLog(@"Anonymous login failed: %@", error);
-//            NSLog(@"%@", user);
-//        } else {
-//            NSLog(@"Anonymous user logged in.");
-//        }
-//    }];
+    if (![LCLUser currentUser]) {
+        [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
+            if (error) {
+                NSLog(@"Anonymous login failed: %@", error);
+                NSLog(@"%@", user);
+            } else {
+                NSLog(@"Anonymous user logged in.");
+            }
+        }];
+    }
     
     PFACL *defaultACL = [PFACL ACL];
     
@@ -76,20 +75,69 @@
 //        if ([tips count] > 0) {
 //            NSLog(@"Tips Exist");
 //        } else {
-//            LCLTip *newTip1 = [LCLTip tipWithText:@"Call someone important to you and let you know how much you care about them. Don’t call collect if you can’t afford it." Category:@"Personal"];
-//            LCLTip *newTip2 = [LCLTip tipWithText:@"Tell the person closest to you that their shoe is untied. When he or she looks down to check, giggle and shrug." Category:@"Personal"];
-//            LCLTip *newTip3 = [LCLTip tipWithText:@"Go to the coffee shop for a cup of brew.  Then strike up conversation with someone new." Category:@"Personal"];
-//            LCLTip *newTip4 = [LCLTip tipWithText:@"Do 20 push ups. Unless you are in a pool. Then just continue swimming." Category:@"Personal"];
-//            LCLTip *newTip5 = [LCLTip tipWithText:@"Try parting your hair differently.  See if anyone notices." Category:@"Personal"];
-//            LCLTip *newTip6 = [LCLTip tipWithText:@"Ahem. This is your mother. Go clean your room. Now." Category:@"Personal"];
-//            LCLTip *newTip7 = [LCLTip tipWithText:@"Look around. Is anybody near you? If not, fart. If someone is, fart, and then apologize." Category:@"Personal"];
-//            NSLog(@"New Tip Created: %@", newTip1.tipTitle);
-//            NSLog(@"New Tip Created: %@", newTip2.tipTitle);
-//            NSLog(@"New Tip Created: %@", newTip3.tipTitle);
-//            NSLog(@"New Tip Created: %@", newTip4.tipTitle);
-//            NSLog(@"New Tip Created: %@", newTip5.tipTitle);
-//            NSLog(@"New Tip Created: %@", newTip6.tipTitle);
-//            NSLog(@"New Tip Created: %@", newTip7.tipTitle);
+//            LCLTip *newTip1 = [LCLTip tipWithText:@"Call someone important to you and let you know how much you care about them. Don’t call collect if you can’t afford it."
+//                                           Number:1
+//                                           Author:@"APP"
+//                                         Category:@"Action"
+//                                         Subcategory:@"Sentimental"];
+//                               
+//            
+//            LCLTip *newTip2 = [LCLTip tipWithText:@"Tell the person closest to you that their shoe is untied. When he or she looks down to check, giggle and shrug."
+//                                           Number:2
+//                                           Author:@"APP"
+//                                             Type:@"Action"
+//                                         Category:@"Joke"];
+//            
+//            LCLTip *newTip3 = [LCLTip tipWithText:@"Go to the coffee shop for a cup of brew.  Then strike up conversation with someone new."
+//                                           Number:3
+//                                           Author:@"LCL"
+//                                             Type:@"Action"
+//                                         Category:@"Rhyme"];
+//            
+//            LCLTip *newTip4 = [LCLTip tipWithText:@"Do 20 push ups. Unless you are in a pool. Then just continue swimming."
+//                                           Number:4
+//                                           Author:@"APP"
+//                                             Type:@"Action"
+//                                         Category:@""
+//                                             Tags:@[@"Action", @"Joke"]];
+//
+//            LCLTip *newTip5 = [LCLTip tipWithText:@"Try parting your hair differently.  See if anyone notices."
+//                                           Number:5
+//                                           Author:@"APP"
+//                                             Type:@"Action"
+//                                         Category:@""
+//                                             Tags:@[@"Action", @"Joke"]];
+//            
+//            LCLTip *newTip6 = [LCLTip tipWithText:@"Ahem. This is your mother. Go clean your room. Now!"
+//                                           Number:6
+//                                           Author:@"LCL"
+//                                             Type:@"Action"
+//                                         Category:@""
+//                                             Tags:@[@"Action", @"Joke"]];
+//            
+//            LCLTip *newTip7 = [LCLTip tipWithText:@"Look around. Is anybody near you? If not, fart. Otherwise, fart and then apologize."
+//                                           Number:6
+//                                           Author:@"APP"
+//                                             Type:@"Action"
+//                                         Category:@""
+//                                             Tags:@[@"Action", @"Joke"]];
+//            
+//            LCLTip *newTip8 = [LCLTip tipWithText:@"Take a five minute walk outside. Leave breadcrumbs behind you so you can find your way back."
+//                                           Number:7
+//                                           Author:@"APP"
+//                                             Type:@"Action"
+//                                         Category:@""
+//                                             Tags:@[@"Action", @"Joke"]];
+//            
+//            
+//            
+//            NSLog(@"New Tip Created: %@", newTip1.title);
+//            NSLog(@"New Tip Created: %@", newTip2.title);
+//            NSLog(@"New Tip Created: %@", newTip3.title);
+//            NSLog(@"New Tip Created: %@", newTip4.title);
+//            NSLog(@"New Tip Created: %@", newTip5.title);
+//            NSLog(@"New Tip Created: %@", newTip6.title);
+//            NSLog(@"New Tip Created: %@", newTip7.title);
 //        }
 //    }];
 //}

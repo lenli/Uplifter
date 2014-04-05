@@ -10,11 +10,14 @@
 #import <Parse/PFObject+Subclass.h>
 
 @implementation LCLTip
+@dynamic number;
 @dynamic tip;
-@dynamic tipTitle;
-@dynamic startHour;
-@dynamic endHour;
+@dynamic title;
+@dynamic author;
 @dynamic category;
+@dynamic subcategory;
+@dynamic hashtag;
+
 
 # pragma mark - Setters and Getters
 + (NSString *)parseClassName {
@@ -22,40 +25,38 @@
 }
 
 # pragma mark - Init Methods
-+ (instancetype)tipWithText:(NSString *)tip Category:(NSString *)category
++ (instancetype)tipWithText:(NSString *)tip
+                     Number:(NSInteger)number
+                     Author:(NSString *)author
+                   Category:(NSString *)category
+                Subcategory:(NSString *)subcategory
+
 {
-    return [[self alloc] initWithClassName:[LCLTip parseClassName] WithTip:tip WithCategory:category];
+    return [[self alloc] initWithClassName:[LCLTip parseClassName]
+                                   Number:number
+                                       Tip:tip
+                                    Author:author
+                                  Category:category
+                               Subcategory:subcategory];
 }
 
-+ (instancetype)defaultTipWithText:(NSString *)tip
-{
-    return [[self alloc] initNoSaveWithClassName:[LCLTip parseClassName] WithTip:tip];
-}
-
-- (instancetype)initWithClassName:(NSString *)newClassName WithTip:(NSString *)tip WithCategory:(NSString *)category
+- (instancetype)initWithClassName:(NSString *)newClassName
+                           Number:(NSInteger)number
+                              Tip:(NSString *)tip
+                           Author:(NSString *)author
+                         Category:(NSString *)category
+                      Subcategory:(NSString *)subcategory
 {
     self = [super init];
     if (self) {
         self.tip = tip ? tip : @"";
-        self.tipTitle = tip ? [self shortenString:tip ToWords:5] : @"";
-        self.startHour = 0;
-        self.endHour = 0;
+        self.number = [NSString stringWithFormat:@"%04d", number];
+        self.title = tip ? [self shortenString:tip ToWords:4] : @"";
+        self.author = author ? author : @"";
         self.category = category ? category : @"";
+        self.subcategory = subcategory ? subcategory : @"";
+        self.hashtag = [NSString stringWithFormat:@"#%@", self.number];
         [self saveInBackground];
-    }
-    return self;
-}
-
-
-- (instancetype)initNoSaveWithClassName:(NSString *)newClassName WithTip:(NSString *)tip
-{
-    self = [super init];
-    if (self) {
-        self.tip = tip ? tip : @"";
-        self.tipTitle = tip ? [self shortenString:tip ToWords:5] : @"";
-        self.startHour = 0;
-        self.endHour = 0;
-        self.category = @"";
     }
     return self;
 }

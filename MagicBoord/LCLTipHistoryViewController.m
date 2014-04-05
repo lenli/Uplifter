@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     self.dataStore = [LCLTipsDataStore sharedDataStore];
-
+    
     [self setupTableView];
     [self setupMessageView];
     [self fetchTipHistory];
@@ -75,8 +75,8 @@
     
     LCLRating *currentRating = [self ratingsForUser][indexPath.row];
     LCLTip *currentTip = currentRating.tip;
-    cell.textLabel.text = currentTip.tipTitle;
-
+    NSString *cellText = [NSString stringWithFormat:@"#%@  %@",currentTip.number, currentTip.title];
+    cell.textLabel.text = cellText;
     [self updateColorByRating:currentRating ForCell:cell];
     
     return cell;
