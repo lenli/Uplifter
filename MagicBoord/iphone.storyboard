@@ -228,8 +228,8 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oki-yP-tr0">
-                                        <rect key="frame" x="100" y="79" width="120" height="58"/>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:29" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oki-yP-tr0">
+                                        <rect key="frame" x="100" y="129" width="120" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="XJ6-w6-FVf"/>
@@ -238,57 +238,75 @@
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="36"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These things take time. Get another one in:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="172" translatesAutoresizingMaskIntoConstraints="NO" id="5f7-EZ-FDm">
-                                        <rect key="frame" x="74" y="30" width="172" height="44"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t be a stranger.  Tweet us pictures, videos or compliments." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="263" translatesAutoresizingMaskIntoConstraints="NO" id="5f7-EZ-FDm">
+                                        <rect key="frame" x="29" y="30" width="263" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like This? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-k3-0ng">
+                                        <rect key="frame" x="123" y="145" width="75" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like This? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-k3-0ng">
-                                        <rect key="frame" x="128" y="147" width="65" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-de-7yr">
-                                        <rect key="frame" x="50" y="175" width="220" height="45"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-de-7yr">
+                                        <rect key="frame" x="50" y="177" width="220" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="220" id="AsG-5l-VVx"/>
-                                            <constraint firstAttribute="height" constant="45" id="BkN-EX-1mk"/>
+                                            <constraint firstAttribute="height" constant="40" id="BkN-EX-1mk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
-                                        <state key="normal" title="Share Uplifter">
+                                        <state key="normal" title="Get Another One">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="dislikeButtonPressed:" destination="h51-mT-z3V" eventType="touchUpInside" id="uXh-zj-7W8"/>
-                                            <action selector="shareButtonPressed:" destination="MQE-jJ-weB" eventType="touchUpInside" id="O8y-WO-TYI"/>
+                                            <action selector="anotherButtonPressed:" destination="MQE-jJ-weB" eventType="touchUpInside" id="YlN-T5-LEb"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet us ideas or action pictures @UplifterApp #uplift" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="209" translatesAutoresizingMaskIntoConstraints="NO" id="481-3s-ANb">
-                                        <rect key="frame" x="56" y="230" width="209" height="39"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3m-oO-2rf">
+                                        <rect key="frame" x="50" y="217" width="220" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
+                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="220" id="c1a-QO-xp5"/>
+                                            <constraint firstAttribute="height" constant="40" id="hNS-iR-sAa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                        <state key="normal" title="Share Uplifter">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shareButtonPressed:" destination="MQE-jJ-weB" eventType="touchUpInside" id="2hW-GV-etz"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@UplifterApp #uplifter" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="163" translatesAutoresizingMaskIntoConstraints="NO" id="481-3s-ANb">
+                                        <rect key="frame" x="79" y="88" width="163" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="XDa-k3-0ng" firstAttribute="top" secondItem="Oki-yP-tr0" secondAttribute="bottom" constant="10" id="2Qu-HR-0Ho"/>
-                                    <constraint firstItem="481-3s-ANb" firstAttribute="top" secondItem="ygs-de-7yr" secondAttribute="bottom" constant="10" id="5ov-dL-Qvp"/>
+                                    <constraint firstItem="XDa-k3-0ng" firstAttribute="top" secondItem="481-3s-ANb" secondAttribute="bottom" constant="35" id="F4U-JU-PN1"/>
                                     <constraint firstItem="5f7-EZ-FDm" firstAttribute="top" secondItem="2JN-sV-Cxw" secondAttribute="top" constant="30" id="IRR-WK-qy1"/>
-                                    <constraint firstItem="ygs-de-7yr" firstAttribute="top" secondItem="XDa-k3-0ng" secondAttribute="bottom" constant="8" id="Klv-cd-Ox8"/>
-                                    <constraint firstItem="Oki-yP-tr0" firstAttribute="top" secondItem="5f7-EZ-FDm" secondAttribute="bottom" constant="5" id="Ott-YH-aGe"/>
+                                    <constraint firstItem="ygs-de-7yr" firstAttribute="top" secondItem="XDa-k3-0ng" secondAttribute="bottom" constant="10" id="Klv-cd-Ox8"/>
                                     <constraint firstAttribute="centerX" secondItem="5f7-EZ-FDm" secondAttribute="centerX" id="QvB-0H-eeS"/>
-                                    <constraint firstAttribute="centerX" secondItem="Oki-yP-tr0" secondAttribute="centerX" id="SWC-Iu-HOD"/>
                                     <constraint firstAttribute="width" constant="320" id="X2q-YK-FJW"/>
                                     <constraint firstAttribute="centerX" secondItem="481-3s-ANb" secondAttribute="centerX" id="chP-51-EXA"/>
+                                    <constraint firstItem="481-3s-ANb" firstAttribute="top" secondItem="5f7-EZ-FDm" secondAttribute="bottom" constant="8" id="eYQ-q4-hMO"/>
+                                    <constraint firstItem="Oki-yP-tr0" firstAttribute="top" secondItem="481-3s-ANb" secondAttribute="bottom" constant="19" id="ezw-Yn-axP"/>
+                                    <constraint firstAttribute="centerX" secondItem="y3m-oO-2rf" secondAttribute="centerX" id="gSM-Cz-Jce"/>
+                                    <constraint firstAttribute="centerX" secondItem="Oki-yP-tr0" secondAttribute="centerX" id="hJs-XF-9bC"/>
                                     <constraint firstAttribute="height" constant="300" id="kPY-yV-a71"/>
                                     <constraint firstAttribute="centerX" secondItem="ygs-de-7yr" secondAttribute="centerX" id="m3F-pm-jtU"/>
                                     <constraint firstAttribute="centerX" secondItem="XDa-k3-0ng" secondAttribute="centerX" id="tgt-gG-O0A"/>
+                                    <constraint firstItem="y3m-oO-2rf" firstAttribute="top" secondItem="ygs-de-7yr" secondAttribute="bottom" id="uaw-IY-gOp"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ISy-WG-EI5">
@@ -355,7 +373,7 @@
     </scenes>
     <resources>
         <image name="CheckerBoard.png" width="320" height="320"/>
-        <image name="Lever.png" width="240" height="240"/>
+        <image name="Lever.png" width="265" height="265"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -363,6 +381,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8qj-1S-Gaf"/>
+        <segue reference="4Us-yW-KwL"/>
     </inferredMetricsTieBreakers>
 </document>

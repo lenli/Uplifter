@@ -38,12 +38,14 @@
 }
 
 #pragma mark - IBActions
+- (IBAction)anotherButtonPressed:(UIButton *)sender
+{
+    NSArray *array = [self.navigationController viewControllers];
+    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+}
 
 - (IBAction)shareButtonPressed:(UIButton *)sender
 {
-//    NSArray *array = [self.navigationController viewControllers];
-//    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
-    
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:@"Check out this cool app called Uplifter: https://twitter.com/uplifterapp", nil] applicationActivities:nil];
     activityVC.excludedActivityTypes = @[ UIActivityTypeAddToReadingList, UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
     [self presentViewController:activityVC animated:YES completion:nil];
@@ -82,6 +84,11 @@
     return cell;
 }
 
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 20;
+}
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
@@ -106,7 +113,7 @@
 - (void)updateColorByRating:(LCLRating *)currentRating ForCell:(LCLTipTableViewCell *)cell
 {
     if ([currentRating.rating integerValue] == 1) {
-        [cell setBackgroundColor:[UIColor colorWithRed:(39/255.0) green:(174/255.0) blue:(96/255) alpha:0.25]];
+        [cell setBackgroundColor:[UIColor colorWithRed:(39/255.0) green:(174/255.0) blue:(96/255) alpha:0.15]];
     } else if ([currentRating.rating integerValue] == -1) {
         [cell setBackgroundColor:[UIColor colorWithRed:(230/255.0) green:(196/255.0) blue:(15/255) alpha:0.25]];
     } else {
@@ -131,7 +138,7 @@
 {
     [self getTipsWithCompletion:^(NSArray *ratings) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
+//            [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
             self.ratingsForUser = ratings;
             [self.tableview reloadData];
             [MBProgressHUD hideLoadingMessageForView:self.view];
@@ -177,7 +184,7 @@
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    NSLog(@"LOCAL NOTIFICATION: %@", localNotification);
+//    NSLog(@"LOCAL NOTIFICATION: %@", localNotification);
     
     
     

@@ -90,13 +90,13 @@
         NSDate *lastTipDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"tipLastReceivedDate"];
         if (lastTipDate) secondsSinceLastTip = [[NSDate date] timeIntervalSinceDate:lastTipDate];
         
-        //    [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+        [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
         
-        if (secondsSinceLastTip >= TIMER_WAIT_TIME_SECONDS || secondsSinceLastTip == 0) {
-            [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
-        } else {
-            [self performSegueWithIdentifier:@"mainToTipHistorySegue" sender:sender];
-        }
+//        if (secondsSinceLastTip >= TIMER_WAIT_TIME_SECONDS || secondsSinceLastTip == 0) {
+//            [self performSegueWithIdentifier:@"mainToTipSegue" sender:sender];
+//        } else {
+//            [self performSegueWithIdentifier:@"mainToTipHistorySegue" sender:sender];
+//        }
     } else {
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"No Internet found" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         [alertView show];

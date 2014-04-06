@@ -211,7 +211,6 @@
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    NSLog(@"%@", notification.alertBody);
 }
 
 
