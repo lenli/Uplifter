@@ -10,7 +10,7 @@
 #import "LCLTipsDataStore.h"
 #import "UIViewController+Helpers.h"
 
-@interface LCLMainViewController : UIViewController
+@interface LCLMainViewController : UIViewController <UIAlertViewDelegate>
 @property (strong, nonatomic) LCLTipsDataStore *dataStore;
 
 @end

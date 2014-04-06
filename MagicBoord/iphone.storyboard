@@ -150,7 +150,6 @@
                                         </state>
                                         <connections>
                                             <action selector="dislikeButtonPressed:" destination="h51-mT-z3V" eventType="touchUpInside" id="FkA-Dh-LfM"/>
-                                            <segue destination="MQE-jJ-weB" kind="push" identifier="dislikeButtonSegue" id="HhG-EV-zM3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKE-Bc-Ypl">
@@ -168,7 +167,6 @@
                                         </state>
                                         <connections>
                                             <action selector="likeButtonPressed:" destination="h51-mT-z3V" eventType="touchUpInside" id="hKP-d7-G8z"/>
-                                            <segue destination="MQE-jJ-weB" kind="push" identifier="likeButtonSegue" id="8qj-1S-Gaf"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whatcha think?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfg-e0-7iV">
@@ -206,11 +204,13 @@
                         <outlet property="displayView" destination="sAH-pw-85E" id="i6g-zc-x6K"/>
                         <outlet property="likeButton" destination="wKE-Bc-Ypl" id="b0C-Tc-xbc"/>
                         <outlet property="tipLabel" destination="DLT-NO-Lzc" id="KIM-Oq-IoR"/>
+                        <segue destination="MQE-jJ-weB" kind="push" identifier="likeButtonSegue" id="dku-bf-cZ1"/>
+                        <segue destination="MQE-jJ-weB" kind="push" identifier="dislikeButtonSegue" id="ngy-fc-Z0Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-RE-sk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="-8"/>
+            <point key="canvasLocation" x="803" y="-33"/>
         </scene>
         <!--Tip History View Controller - Uplifter-->
         <scene sceneID="Aov-ff-520">
@@ -381,6 +381,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4Us-yW-KwL"/>
+        <segue reference="dku-bf-cZ1"/>
     </inferredMetricsTieBreakers>
 </document>

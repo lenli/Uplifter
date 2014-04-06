@@ -57,26 +57,20 @@
 
 - (IBAction)resetButtonPressed:(UIButton *)sender
 {
-    [MBProgressHUD showLoadingMessage:@"Resetting Tips" ForView:self.view];
-    
-    // Delete last tip date
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"tipLastReceivedDate"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    // Delete ratings for user
-    PFQuery *ratingQuery = [PFQuery queryWithClassName:@"LCLRating"];
-    [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
-    [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
-        if (!error) {
-            for (LCLRating *rating in ratings) {
-                [rating deleteInBackground];
-            }
-        } else {
-            NSLog(@"Ratings not found for delete");
-        }
-        [MBProgressHUD hideLoadingMessageForView:self.view];
-    }];
-    
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Reset Account"
+                                                       message:@"This will reset your current user account and all the lifts you’ve seen so far."
+                                                      delegate:self
+                                             cancelButtonTitle:@"Cancel"
+                                             otherButtonTitles:@"Continue", nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self resetRatings];
+    }
+        
 }
 
 - (IBAction)mainButtonPressed:(UIButton *)sender
@@ -98,12 +92,8 @@
 //            [self performSegueWithIdentifier:@"mainToTipHistorySegue" sender:sender];
 //        }
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"No Internet found" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-        [alertView show];
+        [LCLTipsDataStore showConnectionError];
     }
-    
-
-
 
 }
 
@@ -139,6 +129,34 @@
                           self.subtitleLabel.text = @"[   lift the lever   ]";
                       }];
     
+}
+
+- (void)resetRatings
+{
+    if ([AFNetworkReachabilityManager sharedManager].reachable) {
+        [MBProgressHUD showLoadingMessage:@"Resetting Your Account" ForView:self.view];
+        
+        // Delete last tip date
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"tipLastReceivedDate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        // Delete ratings for user
+        PFQuery *ratingQuery = [PFQuery queryWithClassName:@"LCLRating"];
+        [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
+        [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
+            if (!error) {
+                for (LCLRating *rating in ratings) {
+                    [rating deleteInBackground];
+                }
+            } else {
+                NSLog(@"Ratings not found for delete");
+                [LCLTipsDataStore showConnectionError];
+            }
+            [MBProgressHUD hideLoadingMessageForView:self.view];
+        }];
+    } else {
+        [LCLTipsDataStore showConnectionError];
+    }
 }
 
 

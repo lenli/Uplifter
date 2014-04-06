@@ -21,6 +21,15 @@ NSString *const DEFAULT_TIP_TEXT = @"Sit down.  Seriously, you’ve seen all our
     
     return _sharedDataStore;
 }
++ (void)showConnectionError
+{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Connection Error"
+                                                       message:@"Unable to connect with the server.  Check your internet connection and try again."
+                                                      delegate:self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles: nil];
+    [alertView show];
+}
 
 - (NSArray *)getLikeButtonArray
 {

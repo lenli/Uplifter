@@ -127,43 +127,60 @@
 {
     [MBProgressHUD showRandomMessage:@"waiting" ForView:self.view];
     if (self.dataStore.currentTip) {
-        [LCLRating updateRating:self.dataStore.currentRating ForUser:[LCLUser currentUser] AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
-            [self getTipsForUser];
-        }];
+        if ([AFNetworkReachabilityManager sharedManager].reachable) {
+            [LCLRating updateRating:self.dataStore.currentRating ForUser:[LCLUser currentUser] AndTip:self.dataStore.currentTip WithCompletion:^(BOOL success) {
+                [self getTipsForUser];
+            }];
+        } else {
+            [LCLTipsDataStore showConnectionError];
+        }
     } else {
         [self getTipsForUser];
     }
 }
 - (void)getTipsForUser
 {
-    [self getTipsWithCompletion:^(NSArray *ratings) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
-            self.ratingsForUser = ratings;
-            [self.tableview reloadData];
-            [MBProgressHUD hideLoadingMessageForView:self.view];
-        });
-    }];
+    if ([AFNetworkReachabilityManager sharedManager].reachable) {
+        [self getTipsWithCompletion:^(NSArray *ratings) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //            [self startCountdownSinceLastTipForDuration:TIMER_WAIT_TIME_SECONDS];
+                self.ratingsForUser = ratings;
+                [self.tableview reloadData];
+                [MBProgressHUD hideLoadingMessageForView:self.view];
+            });
+        }];
+    } else {
+        [LCLTipsDataStore showConnectionError];
+    }
+
+
 }
 
 - (void)getTipsWithCompletion:(void (^)(NSArray *))completionBlock
 {
-    PFQuery *ratingQuery = [LCLRating query];
-    [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
-    [ratingQuery orderByDescending:@"createdAt"];
-    
-    [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
-        if (!error) {
-            NSMutableArray *tips = [NSMutableArray new];
-            for (LCLRating *rating in ratings) {
-                [tips addObject:rating.tip];
+    if ([AFNetworkReachabilityManager sharedManager].reachable) {
+        PFQuery *ratingQuery = [LCLRating query];
+        [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
+        [ratingQuery orderByDescending:@"createdAt"];
+        
+        [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
+            if (!error) {
+                NSMutableArray *tips = [NSMutableArray new];
+                for (LCLRating *rating in ratings) {
+                    [tips addObject:rating.tip];
+                }
+                [LCLTip fetchAllIfNeeded:tips];
+                completionBlock(ratings);
+            } else {
+                NSLog(@"Ratings Not Found for User");
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Connection Error" message:@"Unable to connect with the server.  Check your internet connection and try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                [alertView show];
             }
-            [LCLTip fetchAllIfNeeded:tips];
-            completionBlock(ratings);
-        } else {
-            NSLog(@"Ratings Not Found for User");
-        }
-    }];
+        }];
+    } else {
+        [LCLTipsDataStore showConnectionError];
+    }
+
 }
 
 - (void)startCountdownSinceLastTipForDuration:(NSInteger)waitSeconds

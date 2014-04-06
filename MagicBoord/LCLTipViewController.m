@@ -47,58 +47,72 @@
 - (void)getRandomTip
 {
     [self fetchTipsAndRatingsAndSelectRandomTip];
+
 }
 
 - (void)fetchTipsAndRatingsAndSelectRandomTip
 {
     // Fetch tips into datastore tips
-    PFQuery *tipQuery = [PFQuery queryWithClassName:@"LCLTip"];
-    [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-        if (results) {
-            self.dataStore.tips = [NSMutableArray arrayWithArray:results];
-            [self fetchRatings];
-        }
-        if (error) {
-            NSLog(@"Error Getting Tips: %@", error);
-        }
-    }];
+    if ([AFNetworkReachabilityManager sharedManager].reachable) {
+        PFQuery *tipQuery = [PFQuery queryWithClassName:@"LCLTip"];
+        [tipQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+            if (results) {
+                self.dataStore.tips = [NSMutableArray arrayWithArray:results];
+                [self fetchRatings];
+            }
+            if (error) {
+                NSLog(@"Error Getting Tips: %@", error);
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Connection Error" message:@"Unable to connect with the server.  Check your internet connection and try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                [alertView show];
+            }
+        }];
+    } else {
+        [LCLTipsDataStore showConnectionError];
+    }
+
 }
 
 - (void)fetchRatings
 {
     // Fetch ratings and determine user's seen tips into datastore currentTips
-    PFQuery *ratingQuery = [LCLRating query];
-    [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
-    [ratingQuery orderByDescending:@"createdAt"];
-    
-    [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
-        if (!error) {
-            
-            NSMutableSet *currentTips = [NSMutableSet new];
-            for (LCLRating *rating in ratings) {
-                [currentTips addObject:rating.tip.objectId];
+    if ([AFNetworkReachabilityManager sharedManager].reachable) {
+        PFQuery *ratingQuery = [LCLRating query];
+        [ratingQuery whereKey:@"user" equalTo:[LCLUser currentUser]];
+        [ratingQuery orderByDescending:@"createdAt"];
+        
+        [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
+            if (!error) {
                 
-            }
-            
-            NSMutableArray *unseenTips = [NSMutableArray new];
-            NSMutableArray *seenTips = [NSMutableArray new];
-            
-            for (LCLTip *tip in self.dataStore.tips) {
-                if ([currentTips containsObject:tip.objectId]) {
-                    [seenTips addObject:tip];
-                } else {
-                    [unseenTips addObject:tip];
+                NSMutableSet *currentTips = [NSMutableSet new];
+                for (LCLRating *rating in ratings) {
+                    [currentTips addObject:rating.tip.objectId];
+                    
                 }
+                
+                NSMutableArray *unseenTips = [NSMutableArray new];
+                NSMutableArray *seenTips = [NSMutableArray new];
+                
+                for (LCLTip *tip in self.dataStore.tips) {
+                    if ([currentTips containsObject:tip.objectId]) {
+                        [seenTips addObject:tip];
+                    } else {
+                        [unseenTips addObject:tip];
+                    }
+                }
+                self.dataStore.currentUserUnseenTips = unseenTips;
+                self.dataStore.currentUserTips = seenTips;
+                
+                [LCLTip fetchAllIfNeeded:seenTips];
+                [self selectRandomTip];
+            } else {
+                NSLog(@"Ratings Not Found for User");
+                [LCLTipsDataStore showConnectionError];
             }
-            self.dataStore.currentUserUnseenTips = unseenTips;
-            self.dataStore.currentUserTips = seenTips;
-            
-            [LCLTip fetchAllIfNeeded:seenTips];
-            [self selectRandomTip];
-        } else {
-            NSLog(@"Ratings Not Found for User");
-        }
-    }];
+        }];
+    } else {
+        [LCLTipsDataStore showConnectionError];
+    }
+
 }
 
 - (void)selectRandomTip
@@ -150,11 +164,21 @@
 
 - (IBAction)likeButtonPressed:(UIButton *)sender
 {
-    self.dataStore.currentRating = @1;
+    if ([AFNetworkReachabilityManager sharedManager].reachable) {
+        self.dataStore.currentRating = @1;
+        [self performSegueWithIdentifier: @"likeButtonSegue" sender: self];
+    } else {
+        [LCLTipsDataStore showConnectionError];
+    }
 }
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
-    self.dataStore.currentRating = @-1;
+    if ([AFNetworkReachabilityManager sharedManager].reachable) {
+        self.dataStore.currentRating = @-1;
+        [self performSegueWithIdentifier: @"dislikeButtonSegue" sender: self];
+    } else {
+        [LCLTipsDataStore showConnectionError];
+    }
 }
 
 @end
