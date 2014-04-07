@@ -26,6 +26,7 @@ extern NSString *const DEFAULT_TIP_TEXT;
 @property (strong, nonatomic) NSMutableArray *ratings;
 
 + (instancetype)sharedDataStore;
++ (void)showErrorForObject:(NSString *)objectString;
 + (void)showConnectionError;
 - (NSArray *)getLikeButtonArray;
 - (NSArray *)getDislikeButtonArray;

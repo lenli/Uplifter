@@ -21,6 +21,19 @@ NSString *const DEFAULT_TIP_TEXT = @"Sit down.  Seriously, you’ve seen all our
     
     return _sharedDataStore;
 }
+
++ (void)showErrorForObject:(NSString *)objectString
+{
+    NSString *titleString = [NSString stringWithFormat:@"Cannot Find %@", objectString];
+    NSString *messageString = [NSString stringWithFormat:@"There was a problem finding %@ from the server.  If the problem continues, try reinstalling the app.", [objectString lowercaseString]];
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:titleString
+                                                       message:messageString
+                                                      delegate:self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles: nil];
+    [alertView show];
+}
+
 + (void)showConnectionError
 {
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Connection Error"

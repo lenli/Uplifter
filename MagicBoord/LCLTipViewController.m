@@ -61,9 +61,7 @@
                 [self fetchRatings];
             }
             if (error) {
-                NSLog(@"Error Getting Tips: %@", error);
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Connection Error" message:@"Unable to connect with the server.  Check your internet connection and try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-                [alertView show];
+                [LCLTipsDataStore showErrorForObject:@"Tips"];
             }
         }];
     } else {
@@ -81,33 +79,31 @@
         [ratingQuery orderByDescending:@"createdAt"];
         
         [ratingQuery findObjectsInBackgroundWithBlock:^(NSArray *ratings, NSError *error) {
+            NSMutableSet *currentTips = [NSMutableSet new];
+            NSMutableArray *unseenTips = [NSMutableArray new];
+            NSMutableArray *seenTips = [NSMutableArray new];
             if (!error) {
-                
-                NSMutableSet *currentTips = [NSMutableSet new];
                 for (LCLRating *rating in ratings) {
                     [currentTips addObject:rating.tip.objectId];
                     
                 }
-                
-                NSMutableArray *unseenTips = [NSMutableArray new];
-                NSMutableArray *seenTips = [NSMutableArray new];
-                
-                for (LCLTip *tip in self.dataStore.tips) {
-                    if ([currentTips containsObject:tip.objectId]) {
-                        [seenTips addObject:tip];
-                    } else {
-                        [unseenTips addObject:tip];
-                    }
-                }
-                self.dataStore.currentUserUnseenTips = unseenTips;
-                self.dataStore.currentUserTips = seenTips;
-                
-                [LCLTip fetchAllIfNeeded:seenTips];
-                [self selectRandomTip];
             } else {
-                NSLog(@"Ratings Not Found for User");
-                [LCLTipsDataStore showConnectionError];
+                [LCLTipsDataStore showErrorForObject:@"Ratings"];
             }
+            
+            for (LCLTip *tip in self.dataStore.tips) {
+                if ([currentTips containsObject:tip.objectId]) {
+                    [seenTips addObject:tip];
+                } else {
+                    [unseenTips addObject:tip];
+                }
+            }
+            self.dataStore.currentUserUnseenTips = unseenTips;
+            self.dataStore.currentUserTips = seenTips;
+            
+            [LCLTip fetchAllIfNeeded:seenTips];
+            [self selectRandomTip];
+            
         }];
     } else {
         [LCLTipsDataStore showConnectionError];
@@ -119,7 +115,7 @@
 {
     // Find unseen tips
     if ([self.dataStore.currentUserUnseenTips count] > 0 ) {
-        // Get Random Tip From Unseen
+        // Get Random Tip From Unseen Array
         NSUInteger randomIndex = arc4random_uniform((u_int32_t)[self.dataStore.currentUserUnseenTips count]);
         self.dataStore.currentTip = self.dataStore.currentUserUnseenTips[randomIndex];
         self.tipLabel.text = self.dataStore.currentTip.tip;
@@ -131,8 +127,8 @@
     }
     
     // Save Last Tip Date
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"tipLastReceivedDate"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"tipLastReceivedDate"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     self.likeButton.hidden = NO;
     self.dislikeButton.hidden = NO;

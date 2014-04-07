@@ -113,9 +113,9 @@
 - (void)updateColorByRating:(LCLRating *)currentRating ForCell:(LCLTipTableViewCell *)cell
 {
     if ([currentRating.rating integerValue] == 1) {
-        [cell setBackgroundColor:[UIColor colorWithRed:(39/255.0) green:(174/255.0) blue:(96/255) alpha:0.15]];
+        [cell setBackgroundColor:[UIColor colorWithRed:(39/255.0) green:(174/255.0) blue:(96/255) alpha:0.4]];
     } else if ([currentRating.rating integerValue] == -1) {
-        [cell setBackgroundColor:[UIColor colorWithRed:(230/255.0) green:(196/255.0) blue:(15/255) alpha:0.25]];
+        [cell setBackgroundColor:[UIColor colorWithRed:(230/255.0) green:(196/255.0) blue:(15/255) alpha:0.5]];
     } else {
         [cell setBackgroundColor:[UIColor lightGrayColor]];
     }
@@ -132,7 +132,7 @@
                 [self getTipsForUser];
             }];
         } else {
-            [LCLTipsDataStore showConnectionError];
+            [LCLTipsDataStore showErrorForObject:@"Ratings"];
         }
     } else {
         [self getTipsForUser];
@@ -172,9 +172,7 @@
                 [LCLTip fetchAllIfNeeded:tips];
                 completionBlock(ratings);
             } else {
-                NSLog(@"Ratings Not Found for User");
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Connection Error" message:@"Unable to connect with the server.  Check your internet connection and try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-                [alertView show];
+                [LCLTipsDataStore showErrorForObject:@"Ratings"];
             }
         }];
     } else {

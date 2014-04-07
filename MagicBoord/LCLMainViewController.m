@@ -137,8 +137,8 @@
         [MBProgressHUD showLoadingMessage:@"Resetting Your Account" ForView:self.view];
         
         // Delete last tip date
-        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"tipLastReceivedDate"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+//        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"tipLastReceivedDate"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
         
         // Delete ratings for user
         PFQuery *ratingQuery = [PFQuery queryWithClassName:@"LCLRating"];
@@ -149,8 +149,7 @@
                     [rating deleteInBackground];
                 }
             } else {
-                NSLog(@"Ratings not found for delete");
-                [LCLTipsDataStore showConnectionError];
+                [LCLTipsDataStore showErrorForObject:@"Ratings"];
             }
             [MBProgressHUD hideLoadingMessageForView:self.view];
         }];
