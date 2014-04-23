@@ -50,7 +50,7 @@
     self = [super init];
     if (self) {
         self.tip = tip ? tip : @"";
-        self.number = [NSString stringWithFormat:@"%04d", number];
+        self.number = [NSString stringWithFormat:@"%04ld", (long)number];
         self.title = tip ? [self shortenString:tip ToWords:4] : @"";
         self.author = author ? author : @"";
         self.category = category ? category : @"";

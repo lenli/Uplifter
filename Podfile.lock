@@ -1,24 +1,24 @@
 PODS:
-  - AFNetworking (2.2.1):
+  - AFNetworking (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.1):
+  - AFNetworking/NSURLConnection (2.2.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.1):
+  - AFNetworking/NSURLSession (2.2.3):
     - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.1)
-  - AFNetworking/Security (2.2.1)
-  - AFNetworking/Serialization (2.2.1)
-  - AFNetworking/UIKit (2.2.1):
+  - AFNetworking/Reachability (2.2.3)
+  - AFNetworking/Security (2.2.3)
+  - AFNetworking/Serialization (2.2.3)
+  - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Facebook-iOS-SDK (3.13.0)
+  - Facebook-iOS-SDK (3.13.1)
   - FontAwesomeKit (2.1.5):
     - FontAwesomeKit/Core
     - FontAwesomeKit/FontAwesome
@@ -36,7 +36,7 @@ PODS:
     - FontAwesomeKit/Core
   - MBProgressHUD (0.8)
   - MZTimerLabel (0.4.1)
-  - Parse (1.2.18):
+  - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
   - Shimmer (1.0.1)
 
@@ -49,12 +49,12 @@ DEPENDENCIES:
   - Shimmer (~> 1.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
-  Facebook-iOS-SDK: 5788541337dc88265bc940cb5ffb05915f9b64e3
+  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  Facebook-iOS-SDK: 0d121e16437981fabff9379e07bf646bd5ab245c
   FontAwesomeKit: 7d935e100337d503bdaefde2ea16be740b81ed13
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   MZTimerLabel: cc6f3abc2bbceeb58f88cd058bd2557ae31f5775
-  Parse: 6dd57f2af9f89dc6facc755cec4e96f8b739b1fb
+  Parse: 3739f0b211c49115bad96d6b0969b804d4da2f24
   Shimmer: a1b92685f04ae7363e655f636a41a276dbb1507e
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1
